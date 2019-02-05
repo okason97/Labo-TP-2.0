@@ -1,0 +1,27 @@
+[
+  {
+    "raza":"raza1",
+    "pelaje":"pelaje1",
+    "image":"horse1"
+  },
+  {
+    "raza":"raza2",
+    "pelaje":"pelaje2",
+    "image":"horse2"
+  },
+  {
+    "raza":"raza3",
+    "pelaje":"pelaje3",
+    "image":"horse3"
+  },
+  {
+    "raza":"raza4",
+    "pelaje":"pelaje4",
+    "image":"horse1"
+  },
+  {
+    "raza":"raza5",
+    "pelaje":"pelaje5",
+    "image":"horse5"
+  }
+]
