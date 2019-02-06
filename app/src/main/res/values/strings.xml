@@ -36,4 +36,7 @@
     <string name="horse_sound_key">horse</string>
     <string name="correct_sound_key">correct</string>
     <string name="config">config_preferences</string>
+    <string name="horse_image">Horse Image</string>
+    <string name="horse_sound">Horse Sound</string>
+    <string name="horse_name">Horse Name</string>
 </resources>
