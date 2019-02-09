@@ -1,58 +1,39 @@
 package com.rr.razasypelajes
 
-import android.content.Context
+import android.support.constraint.ConstraintLayout
+import android.support.v7.widget.RecyclerView
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.BaseAdapter
 import android.widget.ImageButton
 import android.widget.ImageView
 import android.widget.TextView
 import com.rr.razasypelajes.Horses.Horse
 
-class AdapterGrid(private val context: Context,
-                  private val source: List<Horse>): BaseAdapter() {
+class AdapterGrid(context: Reconocimiento): RecyclerView.Adapter<AdapterGrid.ViewHolder>() {
 
-    private val inflater: LayoutInflater
-            = context.getSystemService(Context.LAYOUT_INFLATER_SERVICE) as LayoutInflater
+    private var dataSource: List<Horse> = context.horses
 
-    private val dataSource: Array<Array<Horse>> = initList()
-
-    private fun initList(): Array<Array<Horse>> {
-        val list: Array<Array<Horse>> = emptyArray()
-        val cant = Math.round(source.size.toFloat() / 3)
-        for (i in 0..cant) {
-            val j = i*3
-            list[i] = arrayOf(source[j], source[j+1], source[j+2])
-        }
-        return list
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
+        val view: View = LayoutInflater.from(parent.context).inflate(R.layout.recon_grid_include, parent, false)
+        return ViewHolder(view)
     }
 
-    override fun getCount(): Int {
+    override fun getItemCount(): Int {
         return dataSource.size
     }
 
-    override fun getItem(position: Int): Any {
-        return dataSource[position]
+    override fun onBindViewHolder(holder: ViewHolder, position: Int) {
+        val horse = dataSource[position]
+        holder.texto.text = horse.raza
+        TODO("Agregar imagen, sonido")
     }
 
-    override fun getItemId(position: Int): Long {
-        return position.toLong()
-    }
 
-    override fun getView(position: Int, convertView: View?, parent: ViewGroup): View {
-        val rowView = inflater.inflate(R.layout.recon_grid_include, parent, false)
-
-        val image = rowView.findViewById(R.id.gridItemImage) as ImageView
-        val text = rowView.findViewById(R.id.gridItemText) as TextView
-        val audio = rowView.findViewById(R.id.gridItemAudio) as ImageButton
-
-        val horse = getItem(position) as Horse
-
-        text.text = horse.raza
-        // todo setear imagen y audio
-
-
-        return rowView
+    class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
+        var image: ImageView = itemView.findViewById(R.id.gridItemImage)
+        var audio: ImageButton = itemView.findViewById(R.id.gridItemAudio)
+        var texto: TextView = itemView.findViewById(R.id.gridItemText)
+        var parentLayout: ConstraintLayout = itemView.findViewById(R.id.gridLayout)
     }
 }

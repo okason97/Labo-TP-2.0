@@ -1,47 +1,40 @@
 package com.rr.razasypelajes
 
-import android.content.Context
+import android.support.constraint.ConstraintLayout
+import android.support.v7.widget.RecyclerView
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.BaseAdapter
 import android.widget.ImageButton
 import android.widget.ImageView
 import android.widget.TextView
 import com.rr.razasypelajes.Horses.Horse
 
-class AdapterList(private val context: Context,
-                  private val dataSource: List<Horse>): BaseAdapter() {
+class AdapterList(context: Reconocimiento): RecyclerView.Adapter<AdapterList.ViewHolder>() {
 
-    private val inflater: LayoutInflater
-            = context.getSystemService(Context.LAYOUT_INFLATER_SERVICE) as LayoutInflater
+    private var dataSource: List<Horse> = context.horses
 
-    override fun getCount(): Int {
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
+        val view: View = LayoutInflater.from(parent.context).inflate(R.layout.recon_list_include, parent, false)
+        return ViewHolder(view)
+    }
+
+    override fun getItemCount(): Int {
         return dataSource.size
     }
 
-    override fun getItem(position: Int): Any {
-        return dataSource[position]
+    override fun onBindViewHolder(holder: ViewHolder, position: Int) {
+        val horse = dataSource[position]
+        holder.texto.text = horse.raza
+        TODO("Agregar imagen, sonido y texto grande")
     }
 
-    override fun getItemId(position: Int): Long {
-        return position.toLong()
-    }
 
-    override fun getView(position: Int, convertView: View?, parent: ViewGroup): View {
-        val rowView = inflater.inflate(R.layout.recon_list_include, parent, false)
-
-        val image = rowView.findViewById(R.id.listItemImage) as ImageView
-        val text = rowView.findViewById(R.id.listItemText) as TextView
-        val audio = rowView.findViewById(R.id.listItemAudio) as ImageButton
-        val bigText = rowView.findViewById(R.id.listItemBigText) as TextView
-
-        val horse = getItem(position) as Horse
-
-        text.text = horse.raza
-        // todo setear imagen y audio
-
-
-        return rowView
+    class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
+        var image: ImageView = itemView.findViewById(R.id.listItemImage)
+        var audio: ImageButton = itemView.findViewById(R.id.listItemAudio)
+        var texto: TextView = itemView.findViewById(R.id.listItemText)
+        var bigText: TextView = itemView.findViewById(R.id.listItemBigText)
+        var parentLayout: ConstraintLayout = itemView.findViewById(R.id.listLayout)
     }
 }
