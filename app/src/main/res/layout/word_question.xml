@@ -56,12 +56,13 @@
                 android:onClick="playHorse"
                 android:scaleType="fitXY"
                 app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintStart_toEndOf="@+id/raceText"
+                app:layout_constraintStart_toEndOf="@+id/questionText"
                 app:layout_constraintTop_toTopOf="parent"
                 app:srcCompat="@drawable/audio_regular" />
 
             <TextView
                 android:id="@+id/questionText"
+                android:textColor="@color/primaryTextColor"
                 style="@android:style/TextAppearance.DeviceDefault.Large"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"

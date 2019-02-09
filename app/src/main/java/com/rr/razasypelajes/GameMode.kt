@@ -1,7 +1,7 @@
 package com.rr.razasypelajes
 
-import android.support.v7.app.AppCompatActivity
+abstract class GameMode(context : Game){
 
-abstract class GameMode {
-    abstract fun newGame(context : Game)
+    abstract fun newGame()
+
 }

@@ -13,6 +13,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <ImageView
+        android:id="@+id/questionImage"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginBottom="8dp"
@@ -29,14 +30,14 @@
         app:srcCompat="@android:drawable/ic_menu_myplaces" />
 
     <ImageButton
-        android:id="@+id/imageButton"
+        android:id="@+id/homeButton"
         android:layout_width="55dp"
-        android:onClick="goBack"
         android:layout_height="55dp"
-        android:background="@null"
         android:layout_marginLeft="16dp"
         android:layout_marginStart="16dp"
         android:layout_marginTop="16dp"
+        android:background="@null"
+        android:onClick="goBack"
         android:scaleType="fitXY"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"

@@ -1,11 +1,71 @@
 package com.rr.razasypelajes
 
-import android.support.v7.app.AppCompatActivity
+import android.widget.ImageView
 import com.rr.razasypelajes.Helpers.JSONHelper
 import com.rr.razasypelajes.Horses.Horse
+import com.rr.razasypelajes.Horses.Padres
+import java.util.*
+import kotlin.collections.ArrayList
 
-class InteraccionC: GameMode() {
-    override fun newGame(context: Game) {
-        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+// interaccion_imagen_imagen
+class InteraccionC(private val context : Game): GameMode(context) {
+    override fun newGame() {
+        val r = Random()
+        val cruzas = JSONHelper.fromJSON(Padres::class.java,
+                context.resources.openRawResource(R.raw.padres))
+        val answerIndex = r.nextInt(cruzas.size)
+        val chosenHorses : List<Horse>
+        val horses = JSONHelper.fromJSON(Horse::class.java,
+                context.resources.openRawResource(R.raw.horses))
+        horses.shuffle()
+        chosenHorses = chooseHorses(horses, context.answerViews.size,
+                cruzas[answerIndex].cruza)
+        var id: Int
+        for (i in  0..chosenHorses.size) {
+            id = context.resources.getIdentifier(chosenHorses[i].img, "drawable",
+                    context.packageName)
+            context.answerViews[i].findViewById<ImageView>(R.id.imageAnswer)
+                    .setImageResource(id)
+        }
+
+        id = context.resources.getIdentifier(cruzas[answerIndex].img, "drawable",
+                context.packageName)
+        context.findViewById<ImageView>(R.id.questionImage)
+                .setImageResource(id)
+
+        context.answer = context.answerViews[
+                chosenHorses.indexOfFirst {
+                    horse -> horse.raza == cruzas[answerIndex].cruza
+                }
+        ].id
+    }
+
+    private fun chooseHorses(horses: List<Horse>, size: Int, cruza: String): List<Horse> {
+        var found = false
+        var chosenHorses : List<Horse> = ArrayList()
+        var count = 0
+        for (i in 0 until size-1){
+            if (found){
+                while (horses[count].raza == cruza)
+                    count++
+                chosenHorses += horses[count]
+                count++
+            }else{
+                chosenHorses += horses[count]
+                count++
+                if (horses[count].raza == cruza)
+                    found = true
+            }
+        }
+        chosenHorses += if (found){
+            while (horses[count].raza == cruza)
+                count++
+            horses[count]
+        }else{
+            while (horses[count].raza != cruza)
+                count++
+            horses[count]
+        }
+        return chosenHorses.shuffled()
     }
 }

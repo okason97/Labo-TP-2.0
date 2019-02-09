@@ -14,11 +14,11 @@ import kotlin.properties.Delegates
 
 class Game: AppCompatActivity() {
     private val sounds : HashMap<String, MediaPlayer> = HashMap()
-    var horsesViews : ArrayList<ConstraintLayout> = ArrayList()
+    var answerViews : ArrayList<ConstraintLayout> = ArrayList()
     var answer : Int by Delegates.notNull()
-    private var horses : List<Horse> = ArrayList()
     private lateinit var gameMode : GameMode
     private var count = 0
+    private var victories = 0
 
     private fun initializeSounds() {
         sounds[getString(R.string.horse_sound_key)] = MediaPlayer.create(this, R.raw.horse_sound)
@@ -31,7 +31,7 @@ class Game: AppCompatActivity() {
         initializeSounds()
         val sharedPref = getSharedPreferences(getString(R.string.config), Context.MODE_PRIVATE)
         setGameMode(sharedPref)
-        gameMode.newGame(this)
+        gameMode.newGame()
         count++
     }
 
@@ -39,47 +39,47 @@ class Game: AppCompatActivity() {
         when(sharedPref.getInt(getString(R.string.modo_interaccion), R.id.interaccionA)){
             R.id.interaccionA -> {
                 if (sharedPref.getBoolean(getString(R.string.level), false)){
-                    horsesViews.add(findViewById(R.id.answer1))
-                    horsesViews.add(findViewById(R.id.answer2))
-                    setContentView(R.layout.interaccion_imagen_imagen_level1)
+                    addLevelOneAnswers()
+                    setContentView(R.layout.interaccion_imagen_palabra_level1)
                 }else{
-                    horsesViews.add(findViewById(R.id.answer1))
-                    horsesViews.add(findViewById(R.id.answer2))
-                    horsesViews.add(findViewById(R.id.answer3))
-                    horsesViews.add(findViewById(R.id.answer4))
-                    setContentView(R.layout.interaccion_imagen_imagen_level2)
+                    addLevelTwoAnswers()
+                    setContentView(R.layout.interaccion_imagen_palabra_level2)
                 }
-                gameMode = InteraccionA(sharedPref.getInt(getString(R.string.minijuego), R.id.razasYPelajes))
+                gameMode = InteraccionA(this)
             }
             R.id.interaccionB -> {
                 if (sharedPref.getBoolean(getString(R.string.level), false)){
-                    horsesViews.add(findViewById(R.id.answer1))
-                    horsesViews.add(findViewById(R.id.answer2))
+                    addLevelOneAnswers()
                     setContentView(R.layout.interaccion_palabra_imagen_level1)
                 }else{
-                    horsesViews.add(findViewById(R.id.answer1))
-                    horsesViews.add(findViewById(R.id.answer2))
-                    horsesViews.add(findViewById(R.id.answer3))
-                    horsesViews.add(findViewById(R.id.answer4))
+                    addLevelTwoAnswers()
                     setContentView(R.layout.interaccion_palabra_imagen_level2)
                 }
-                gameMode = InteraccionB()
+                gameMode = InteraccionB(this)
             }
             R.id.interaccionC -> {
                 if (sharedPref.getBoolean(getString(R.string.level), false)){
-                    horsesViews.add(findViewById(R.id.answer1))
-                    horsesViews.add(findViewById(R.id.answer2))
-                    setContentView(R.layout.interaccion_imagen_palabra_level1)
+                    addLevelOneAnswers()
+                    setContentView(R.layout.interaccion_imagen_imagen_level1)
                 }else{
-                    horsesViews.add(findViewById(R.id.answer1))
-                    horsesViews.add(findViewById(R.id.answer2))
-                    horsesViews.add(findViewById(R.id.answer3))
-                    horsesViews.add(findViewById(R.id.answer4))
-                    setContentView(R.layout.interaccion_imagen_palabra_level2)
+                    addLevelTwoAnswers()
+                    setContentView(R.layout.interaccion_imagen_imagen_level2)
                 }
-                gameMode = InteraccionC()
+                gameMode = InteraccionC(this)
             }
         }
+    }
+
+    private fun addLevelTwoAnswers() {
+        answerViews.add(findViewById(R.id.answer1))
+        answerViews.add(findViewById(R.id.answer2))
+        answerViews.add(findViewById(R.id.answer3))
+        answerViews.add(findViewById(R.id.answer4))
+    }
+
+    private fun addLevelOneAnswers() {
+        answerViews.add(findViewById(R.id.answer1))
+        answerViews.add(findViewById(R.id.answer2))
     }
 
     private fun playSound(str : String) {
@@ -89,10 +89,10 @@ class Game: AppCompatActivity() {
     fun selectedAnswer(view: View) {
         if (count < 5){
             if (view.id == answer) {
+                victories++
                 playCorrect()
-                System.out.println(correctDuration())
                 Handler().postDelayed({
-                    gameMode.newGame(this)
+                    gameMode.newGame()
                 }, correctDuration())
             } else {
                 restartError()
@@ -100,6 +100,7 @@ class Game: AppCompatActivity() {
             }
             count++
         }else{
+
             goBack(null)
         }
     }
