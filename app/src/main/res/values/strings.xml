@@ -40,4 +40,8 @@
     <string name="horse_image">Horse Image</string>
     <string name="horse_sound">Horse Sound</string>
     <string name="horse_name">Horse Name</string>
+    <string name="horse_image">Horse Image</string>
+    <string name="play_horse_sound">Play Horse Sound</string>
+    <string name="horse_breed_placeholder">Horse Breed Placeholder</string>
+    <string name="placeholder">Placeholder</string>
 </resources>
