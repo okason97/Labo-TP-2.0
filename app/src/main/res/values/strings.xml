@@ -36,4 +36,5 @@
     <string name="horse_sound_key">horse</string>
     <string name="correct_sound_key">correct</string>
     <string name="config">config_preferences</string>
+    <string name="razas_y_pelajes_pregunta">raza %1$s y pelaje %2$s</string >
 </resources>

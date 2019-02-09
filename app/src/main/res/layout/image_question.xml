@@ -31,6 +31,7 @@
     <ImageButton
         android:id="@+id/imageButton"
         android:layout_width="55dp"
+        android:onClick="goBack"
         android:layout_height="55dp"
         android:background="@null"
         android:layout_marginLeft="16dp"
