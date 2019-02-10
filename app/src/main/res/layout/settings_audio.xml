@@ -18,7 +18,7 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <Switch
-        android:id="@+id/level"
+        android:id="@+id/audioSwitch"
         style="@android:style/TextAppearance.DeviceDefault.Medium"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -41,6 +41,6 @@
         android:layout_marginStart="32dp"
         android:layout_marginLeft="32dp"
         android:text="@string/femenina"
-        app:layout_constraintStart_toEndOf="@+id/level"
-        app:layout_constraintTop_toTopOf="@+id/level" />
+        app:layout_constraintStart_toEndOf="@+id/audioSwitch"
+        app:layout_constraintTop_toTopOf="@+id/audioSwitch" />
 </android.support.constraint.ConstraintLayout>

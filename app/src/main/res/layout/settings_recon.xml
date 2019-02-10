@@ -18,7 +18,7 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <RadioGroup
-        android:id="@+id/ViewMode"
+        android:id="@+id/reconSwitch"
         android:layout_width="306dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
@@ -48,7 +48,7 @@
     </RadioGroup>
 
     <CheckBox
-        android:id="@+id/razasCheckbox"
+        android:id="@+id/rypCheckbox"
         style="@android:style/TextAppearance.DeviceDefault.Medium"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -56,8 +56,8 @@
         android:layout_marginBottom="24dp"
         android:text="Razas y Pelajes"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="@+id/ViewMode"
-        app:layout_constraintTop_toBottomOf="@+id/ViewMode" />
+        app:layout_constraintStart_toStartOf="@+id/reconSwitch"
+        app:layout_constraintTop_toBottomOf="@+id/reconSwitch" />
 
     <CheckBox
         android:id="@+id/cruzasCheckbox"
@@ -67,8 +67,8 @@
         android:layout_marginStart="32dp"
         android:layout_marginLeft="32dp"
         android:text="Cruzas"
-        app:layout_constraintBottom_toBottomOf="@+id/razasCheckbox"
-        app:layout_constraintStart_toEndOf="@+id/razasCheckbox"
-        app:layout_constraintTop_toTopOf="@+id/razasCheckbox" />
+        app:layout_constraintBottom_toBottomOf="@+id/rypCheckbox"
+        app:layout_constraintStart_toEndOf="@+id/rypCheckbox"
+        app:layout_constraintTop_toTopOf="@+id/rypCheckbox" />
 
 </android.support.constraint.ConstraintLayout>

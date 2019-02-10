@@ -4,14 +4,20 @@ import android.content.Context
 import android.content.SharedPreferences
 import android.media.MediaPlayer
 import android.os.Bundle
+import android.support.v4.app.DialogFragment
 import android.support.v7.app.AppCompatActivity
+import android.view.View
 import com.rr.razasypelajes.Horses.Horse
 
-class Reconocimiento : AppCompatActivity() {
+class Reconocimiento : AppCompatActivity(), ExitDialog.ExitDialogListener {
     private val sounds : HashMap<String, MediaPlayer> = HashMap()
     private lateinit var mode : ReconMode
 
     var horses : List<Horse> = ArrayList()
+
+    override fun onExitDialogPositiveClick(dialog: DialogFragment) {
+        finish()
+    }
 
     private fun loadRazasYPelajes(horses : List<Horse>) {
         TODO()
@@ -48,4 +54,11 @@ class Reconocimiento : AppCompatActivity() {
         setReconMode(sharedPref)
         mode.runRecon()
     }
+
+    fun goBack(view: View?){
+        // Create an instance of the dialog fragment and show it
+        val dialog = ExitDialog() as DialogFragment
+        dialog.show(supportFragmentManager, "NoticeDialogFragment")
+    }
+
 }

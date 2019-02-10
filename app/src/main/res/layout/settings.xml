@@ -39,7 +39,7 @@
                         app:layout_constraintTop_toTopOf="parent" />
 
                     <RadioGroup
-                        android:id="@+id/ViewMode"
+                        android:id="@+id/reconSwitch"
                         android:layout_width="306dp"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="10dp"
@@ -71,8 +71,8 @@
                         android:layout_height="wrap_content"
                         android:layout_marginTop="25dp"
                         android:text="Razas"
-                        app:layout_constraintStart_toStartOf="@+id/ViewMode"
-                        app:layout_constraintTop_toBottomOf="@+id/ViewMode" />
+                        app:layout_constraintStart_toStartOf="@+id/reconSwitch"
+                        app:layout_constraintTop_toBottomOf="@+id/reconSwitch" />
 
                     <CheckBox
                         style="@android:style/TextAppearance.DeviceDefault.Medium"
