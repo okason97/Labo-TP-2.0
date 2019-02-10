@@ -1,5 +1,8 @@
 package com.rr.razasypelajes
 
+import android.content.Context
+import android.media.MediaPlayer
+import android.widget.Button
 import android.widget.TextView
 import com.rr.razasypelajes.Horses.Horse
 
@@ -18,8 +21,18 @@ abstract class QuestionMode {
         return chosenHorses
     }
 
-    fun setText(view: TextView, horse: Horse){
-        view.text = getData(horse)
+    fun setText(view : TextView, horse: Horse){
+        view.text = getPrettyData(horse)
+    }
+
+    abstract fun getPrettyData(horse: Horse): String
+
+    fun setSound(view : Button, horse : Horse, context : Context){
+        view.setOnClickListener {
+            val id = context.resources.getIdentifier("sound_"+getData(horse), "raw",
+                    context.packageName)
+            MediaPlayer.create(context, id).start()
+        }
     }
 
     abstract fun getData(horse: Horse): String

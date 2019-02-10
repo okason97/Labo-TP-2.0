@@ -6,13 +6,18 @@ import android.media.MediaPlayer
 import android.os.Bundle
 import android.os.Handler
 import android.support.constraint.ConstraintLayout
+import android.support.v4.app.DialogFragment
 import android.support.v7.app.AppCompatActivity
 import android.view.View
-import com.rr.razasypelajes.Horses.Horse
 import kotlin.collections.ArrayList
 import kotlin.properties.Delegates
 
-class Game: AppCompatActivity() {
+class Game: AppCompatActivity(), ExitDialog.ExitDialogListener {
+
+    override fun onExitDialogPositiveClick(dialog: DialogFragment) {
+        finish()
+    }
+
     private val sounds : HashMap<String, MediaPlayer> = HashMap()
     var answerViews : ArrayList<ConstraintLayout> = ArrayList()
     var answer : Int by Delegates.notNull()
@@ -87,22 +92,24 @@ class Game: AppCompatActivity() {
     }
 
     fun selectedAnswer(view: View) {
-        if (count < 5){
-            if (view.id == answer) {
-                victories++
-                playCorrect()
+        if (view.id == answer) {
+            victories++
+            playCorrect()
+            if (count < 5) {
                 Handler().postDelayed({
                     gameMode.newGame()
                 }, correctDuration())
-            } else {
-                restartError()
-                playError()
+            }else{
+                if (victories >= 3){
+                    val sharedPref = getSharedPreferences(getString(R.string.config), Context.MODE_PRIVATE)
+                    if ()
+                }
             }
-            count++
-        }else{
-
-            goBack(null)
+        } else {
+            restartError()
+            playError()
         }
+        count++
     }
 
     private fun restartError() {
@@ -125,9 +132,11 @@ class Game: AppCompatActivity() {
 
     private fun playError() = playSound(getString(R.string.error_sound_key))
 
-    private fun playHorse(view: View) = playSound(getString(R.string.horse_sound_key))
-
     private fun playCorrect() = playSound(getString(R.string.correct_sound_key))
 
-    private fun goBack(view: View?) = finish()
+    private fun goBack(view: View?){
+        // Create an instance of the dialog fragment and show it
+        val dialog : DialogFragment = ExitDialog();
+        dialog.show(supportFragmentManager, "NoticeDialogFragment");
+    }
 }

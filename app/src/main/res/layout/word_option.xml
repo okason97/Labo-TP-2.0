@@ -24,8 +24,9 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <ImageView
-        android:id="@+id/imageView"
+    <Button
+        android:id="@+id/soundAnswer"
+        android:background="@drawable/sound_button_effect"
         android:layout_width="40dp"
         android:layout_height="40dp"
         android:layout_marginBottom="35dp"
@@ -37,6 +38,5 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textAnswer"
-        app:srcCompat="@drawable/audio_regular" />
+        app:layout_constraintTop_toBottomOf="@+id/textAnswer" />
 </android.support.constraint.ConstraintLayout>

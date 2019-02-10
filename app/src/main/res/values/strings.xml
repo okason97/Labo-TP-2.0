@@ -44,4 +44,8 @@
     <string name="play_horse_sound">Play Horse Sound</string>
     <string name="horse_breed_placeholder">Horse Breed Placeholder</string>
     <string name="placeholder">Placeholder</string>
+    <string name="quit_message">¿Desea volver a la pantalla principal?</string>
+    <string name="accept">aceptar</string>
+    <string name="cancel">cancelar</string>
+    <string name="victory_message">¡Has ganado!</string>
 </resources>

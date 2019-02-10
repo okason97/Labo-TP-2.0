@@ -1,5 +1,7 @@
 package com.rr.razasypelajes
 
+import android.content.Context
+import android.content.SharedPreferences
 import android.widget.ImageView
 import com.rr.razasypelajes.Helpers.JSONHelper
 import com.rr.razasypelajes.Horses.Horse
@@ -11,14 +13,21 @@ class InteraccionB(private val context : Game): GameMode(context){
         val horses = JSONHelper.fromJSON(Horse::class.java, context.resources.openRawResource(R.raw.horses))
         horses.shuffle()
         val r = Random()
+        val sharedPref : SharedPreferences = context.getSharedPreferences(
+                context.getString(R.string.config), Context.MODE_PRIVATE);
         val razaOexclusivoPelaje = r.nextBoolean()
         val questionMode : QuestionMode
-        if (razaOexclusivoPelaje){
-            // raza
-            questionMode = QuestionRaza()
+        questionMode = if (sharedPref.getInt(context.getString(R.string.minijuego), R.id.razasYPelajes) ==
+                R.id.razasYPelajes){
+            if (razaOexclusivoPelaje){
+                // raza
+                QuestionRaza()
+            }else{
+                // pelaje
+                QuestionPelaje()
+            }
         }else{
-            // pelaje
-            questionMode = QuestionPelaje()
+            QuestionRazaYPelaje()
         }
         val chosenHorses : List<Horse>
         chosenHorses = questionMode.chooseHorses(horses, context.answerViews.size)
@@ -33,6 +42,8 @@ class InteraccionB(private val context : Game): GameMode(context){
         val answerIndex = r.nextInt(chosenHorses.size)
 
         questionMode.setText(context.findViewById(R.id.questionText), horses[answerIndex])
+        questionMode.setSound(context.findViewById(R.id.questionSound),
+                horses[answerIndex], context)
 
         context.answer = context.answerViews[answerIndex].id
     }
