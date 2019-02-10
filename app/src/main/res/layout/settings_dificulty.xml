@@ -18,7 +18,7 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <Switch
-        android:id="@+id/sex"
+        android:id="@+id/dificultySwitch"
         style="@android:style/TextAppearance.DeviceDefault.Medium"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -41,7 +41,7 @@
         android:layout_marginStart="32dp"
         android:layout_marginLeft="32dp"
         android:text="Dificil"
-        app:layout_constraintStart_toEndOf="@+id/sex"
-        app:layout_constraintTop_toTopOf="@+id/sex" />
+        app:layout_constraintStart_toEndOf="@+id/dificultySwitch"
+        app:layout_constraintTop_toTopOf="@+id/dificultySwitch" />
 
 </android.support.constraint.ConstraintLayout>
