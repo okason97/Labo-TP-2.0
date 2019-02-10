@@ -37,7 +37,6 @@
     <string name="correct_sound_key">correct</string>
     <string name="config">config_preferences</string>
     <string name="razas_y_pelajes_pregunta">raza %1$s y pelaje %2$s</string >
-    <string name="horse_image">Horse Image</string>
     <string name="horse_sound">Horse Sound</string>
     <string name="horse_name">Horse Name</string>
     <string name="horse_image">Horse Image</string>
@@ -48,4 +47,6 @@
     <string name="accept">aceptar</string>
     <string name="cancel">cancelar</string>
     <string name="victory_message">¡Has ganado!</string>
+    <string name="victory_finish">Volver al menu</string>
+    <string name="victory_restart">Volver a jugar</string>
 </resources>
