@@ -1,40 +1,67 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <include
-        android:id="@+id/include3"
-        layout="@layout/recon_list_imgsound"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        android:layout_marginLeft="8dp"
-        android:layout_marginTop="24dp"
-        android:layout_marginEnd="8dp"
-        android:layout_marginRight="8dp"
-        android:layout_marginBottom="24dp"
+    <ImageView
+        android:id="@+id/listItemImage"
+        android:layout_width="125dp"
+        android:layout_height="125dp"
+        android:layout_marginStart="64dp"
+        android:layout_marginLeft="64dp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginRight="16dp"
+        android:contentDescription="@string/horse_image"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toStartOf="@+id/textView8"
+        app:layout_constraintEnd_toStartOf="@+id/listItemText"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@android:drawable/ic_menu_myplaces" />
+
+    <ImageButton
+        android:id="@+id/listItemAudio"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginLeft="16dp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginRight="16dp"
+        android:layout_marginBottom="8dp"
+        android:background="@null"
+        android:contentDescription="@string/horse_sound"
+        android:scaleType="fitXY"
+        app:layout_constraintBottom_toBottomOf="@+id/listItemImage"
+        app:layout_constraintEnd_toStartOf="@+id/listItemBigText"
+        app:layout_constraintStart_toEndOf="@+id/listItemImage"
+        app:layout_constraintTop_toBottomOf="@+id/listItemText"
+        app:srcCompat="@drawable/audio_regular" />
 
     <TextView
-        android:id="@+id/textView8"
-        android:layout_width="254dp"
+        android:id="@+id/listItemText"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        android:layout_marginLeft="8dp"
-        android:layout_marginEnd="8dp"
-        android:layout_marginRight="8dp"
+        android:layout_marginTop="8dp"
+        android:text="@string/placeholder"
+        app:layout_constraintBottom_toTopOf="@+id/listItemAudio"
+        app:layout_constraintEnd_toEndOf="@+id/listItemAudio"
+        app:layout_constraintStart_toStartOf="@+id/listItemAudio"
+        app:layout_constraintTop_toTopOf="@+id/listItemImage" />
+
+    <TextView
+        android:id="@+id/listItemBigText"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginLeft="16dp"
+        android:layout_marginEnd="64dp"
+        android:layout_marginRight="64dp"
         android:textSize="12sp"
-        app:layout_constraintBottom_toBottomOf="@+id/include3"
+        app:layout_constraintBottom_toBottomOf="@+id/listItemImage"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/include3"
-        app:layout_constraintTop_toTopOf="@+id/include3"
+        app:layout_constraintStart_toEndOf="@+id/listItemText"
+        app:layout_constraintTop_toTopOf="@+id/listItemImage"
         tools:text="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum." />
 
 </android.support.constraint.ConstraintLayout>
