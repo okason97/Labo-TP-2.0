@@ -45,6 +45,7 @@
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:enabled="false"
+            android:clickable="false"
             android:text="Razas y Pelajes: Palabra-Imagen" />
 
         <RadioButton
@@ -54,6 +55,7 @@
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:enabled="false"
+            android:clickable="false"
             android:text="Cruza: Imagen-Imagen" />
     </RadioGroup>
 
