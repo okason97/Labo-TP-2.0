@@ -18,17 +18,17 @@ class ExitDialog : DialogFragment() {
     // Use this instance of the interface to deliver action events
     private lateinit var mListener : ExitDialogListener
 
-    // Override the Fragment.onAttach() method to instantiate the ExitDialogListener
+    // Override the Fragment.onAttach() method to instantiate the ExitConfigDialogListener
     override fun onAttach(context : Context) {
         super.onAttach(context)
         // Verify that the host context implements the callback interface
         try {
-            // Instantiate the ExitDialogListener so we can send events to the host
+            // Instantiate the ExitConfigDialogListener so we can send events to the host
             mListener = context as ExitDialogListener
         } catch (e : ClassCastException) {
             // The context doesn't implement the interface, throw exception
             throw ClassCastException(context.toString()
-                    + " must implement ExitDialogListener")
+                    + " must implement ExitConfigDialogListener")
         }
     }
 

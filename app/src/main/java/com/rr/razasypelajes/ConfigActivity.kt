@@ -6,11 +6,20 @@ import android.os.Bundle
 import android.support.v4.app.DialogFragment
 import android.support.v7.app.AppCompatActivity
 import android.view.View
-import android.widget.CheckBox
-import android.widget.RadioGroup
-import android.widget.Switch
+import android.widget.*
 
-class ConfigActivity : AppCompatActivity(), ExitDialog.ExitDialogListener {
+class ConfigActivity : AppCompatActivity(), ExitConfigDialog.ExitConfigDialogListener {
+    override fun onExitConfigDialogPositiveClick(dialog: DialogFragment) {
+        // Save preferences
+        saveValues()
+
+        finish()
+    }
+
+    override fun onExitConfigDialogNeutralClick(dialog: DialogFragment) {
+        finish()
+    }
+
     private val preferences : SharedPreferences = getSharedPreferences(getString(R.string.config), Context.MODE_PRIVATE)
 
     // Recon
@@ -23,20 +32,14 @@ class ConfigActivity : AppCompatActivity(), ExitDialog.ExitDialogListener {
 
     // Dificulty
     private val dificultySwitch: Switch = findViewById(R.id.settingsDificultySwitch)
+    private val dificultyText : TextView = findViewById(R.id.settingsDificultyText)
 
     // Audio
     private val audioSwitch : Switch = findViewById(R.id.settingsAudioSwitch)
 
-    override fun onExitDialogPositiveClick(dialog: DialogFragment) {
-        finish()
-    }
-
     fun goBack(view: View?){
-        // Save preferences
-        saveValues()
-
         // Create an instance of the dialog fragment and show it
-        val dialog = ExitDialog() as DialogFragment
+        val dialog : DialogFragment = ExitDialog()
         dialog.show(supportFragmentManager, "NoticeDialogFragment")
     }
 
@@ -52,10 +55,12 @@ class ConfigActivity : AppCompatActivity(), ExitDialog.ExitDialogListener {
         // Recon
         reconRadio.check(preferences.getInt(getString(R.string.reconRadio),
                 R.id.lista))
+
         reconRyP.isChecked = preferences.getBoolean(getString(R.string.reconRyP),
                 false)
-        reconCruza.isChecked = preferences.getBoolean(getString(R.string.reconRyP),
+        reconCruza.isChecked = preferences.getBoolean(getString(R.string.reconCruza),
                 false)
+
         if (!(reconRyP.isChecked && reconCruza.isChecked)) reconRyP.isChecked = true
 
         // Minigame
@@ -64,7 +69,7 @@ class ConfigActivity : AppCompatActivity(), ExitDialog.ExitDialogListener {
 
         // Dificulty
         dificultySwitch.isChecked = preferences.getBoolean(
-                getString(R.string.dificultySwitch), false)
+                getString(R.string.level), false)
 
         // Audio
         audioSwitch.isChecked = preferences.getBoolean(getString(R.string.audioSwitch),
@@ -77,6 +82,7 @@ class ConfigActivity : AppCompatActivity(), ExitDialog.ExitDialogListener {
                                 R.integer.firstRyPImagenPalabraLevel)){
                     dificultySwitch.isEnabled = true
                     dificultySwitch.isClickable = true
+                    dificultyText.isEnabled = true
                 }
             }
             R.id.rypPalabraImagen -> {
@@ -84,19 +90,35 @@ class ConfigActivity : AppCompatActivity(), ExitDialog.ExitDialogListener {
                                 R.integer.firstRyPPalabraImagenLevel)){
                     dificultySwitch.isEnabled = true
                     dificultySwitch.isClickable = true
+                    dificultyText.isEnabled = true
                 }
             }
             R.id.cruzas -> {
                 if(currentMaxLevel > resources.getInteger(R.integer.firstCruzasLevel)){
                     dificultySwitch.isEnabled = true
                     dificultySwitch.isClickable = true
+                    dificultyText.isEnabled = true
                 }
             }
+        }
+        if(currentMaxLevel > resources.getInteger(R.integer.firstCruzasLevel)){
+            minigameRadio.findViewById<RadioButton>(R.id.cruzas).isEnabled = true
+            minigameRadio.findViewById<RadioButton>(R.id.cruzas).isClickable = true
+        }else if(currentMaxLevel > resources.getInteger(
+                    R.integer.firstRyPPalabraImagenLevel)){
+            minigameRadio.findViewById<RadioButton>(R.id.rypPalabraImagen).isEnabled = true
+            minigameRadio.findViewById<RadioButton>(R.id.rypPalabraImagen).isClickable = true
         }
     }
 
     private fun saveValues() {
         val editor : SharedPreferences.Editor = preferences.edit()
+        editor.putBoolean(getString(R.string.audioSwitch), audioSwitch.isChecked)
+        editor.putBoolean(getString(R.string.level), dificultySwitch.isChecked)
+        editor.putInt(getString(R.string.minijuego), minigameRadio.checkedRadioButtonId)
+        editor.putInt(getString(R.string.reconRadio), reconRadio.checkedRadioButtonId)
+        editor.putBoolean(getString(R.string.reconRyP), reconRyP.isChecked)
+        editor.putBoolean(getString(R.string.reconCruza), reconCruza.isChecked)
         editor.apply()
     }
 
@@ -107,31 +129,35 @@ class ConfigActivity : AppCompatActivity(), ExitDialog.ExitDialogListener {
                 if(currentMaxLevel > resources.getInteger(R.integer.firstRyPImagenPalabraLevel)){
                     dificultySwitch.isEnabled = true
                     dificultySwitch.isClickable = true
+                    dificultyText.isEnabled = true
                 }else{
                     dificultySwitch.isEnabled = false
                     dificultySwitch.isClickable = false
+                    dificultyText.isEnabled = false
                 }
             }
             R.id.rypPalabraImagen -> {
                 if(currentMaxLevel > resources.getInteger(R.integer.firstRyPPalabraImagenLevel)){
                     dificultySwitch.isEnabled = true
                     dificultySwitch.isClickable = true
+                    dificultyText.isEnabled = true
                 }else{
                     dificultySwitch.isEnabled = false
                     dificultySwitch.isClickable = false
+                    dificultyText.isEnabled = false
                 }
             }
             R.id.cruzas -> {
                 if(currentMaxLevel > resources.getInteger(R.integer.firstCruzasLevel)){
                     dificultySwitch.isEnabled = true
                     dificultySwitch.isClickable = true
+                    dificultyText.isEnabled = true
                 }else{
                     dificultySwitch.isEnabled = false
                     dificultySwitch.isClickable = false
+                    dificultyText.isEnabled = false
                 }
             }
         }
     }
-
-
 }

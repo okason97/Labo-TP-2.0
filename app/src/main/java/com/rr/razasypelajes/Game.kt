@@ -111,8 +111,8 @@ class Game: AppCompatActivity(), ExitDialog.ExitDialogListener, VictoryDialog.Vi
     fun selectedAnswer(view: View) {
         if (view.id == answer) {
             victories++
+            playCorrect()
             if (count < 5) {
-                playCorrect()
                 Handler().postDelayed({
                     gameMode.newGame()
                 }, correctDuration())
@@ -177,6 +177,15 @@ class Game: AppCompatActivity(), ExitDialog.ExitDialogListener, VictoryDialog.Vi
         } else {
             restartError()
             playError()
+            if (count < 5) {
+                Handler().postDelayed({
+                    gameMode.newGame()
+                }, correctDuration())
+            }else{
+                // Create an instance of the dialog fragment and show it
+                val dialog : DialogFragment = VictoryDialog()
+                dialog.show(supportFragmentManager, "Fin del juego")
+            }
         }
         count++
     }

@@ -55,6 +55,9 @@
     <string name="lastLevel">last level</string>
     <string name="reconRadio">reconRadio</string>
     <string name="reconRyP">reconRyP</string>
+    <string name="reconCruza">reconCruza</string>
     <string name="audioSwitch">audioSwitch</string>
     <string name="dificultySwitch">dificultySwitch</string>
+    <string name="accept_config">Aceptar y Salir</string>
+    <string name="cancel_config">Salir sin guardar</string>
 </resources>
