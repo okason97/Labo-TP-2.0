@@ -25,6 +25,7 @@
         android:layout_marginLeft="8dp"
         android:layout_marginTop="32dp"
         android:layout_marginBottom="24dp"
+        android:onClick="onChangeMinigame"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="@+id/settingsMinigameTitle"
         app:layout_constraintTop_toBottomOf="@+id/settingsMinigameTitle">
@@ -43,6 +44,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
+            android:enabled="false"
             android:text="Razas y Pelajes: Palabra-Imagen" />
 
         <RadioButton
@@ -51,6 +53,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
+            android:enabled="false"
             android:text="Cruza: Imagen-Imagen" />
     </RadioGroup>
 
