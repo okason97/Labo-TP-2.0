@@ -127,6 +127,8 @@ class Game: AppCompatActivity(), ExitDialog.ExitDialogListener, VictoryDialog.Vi
                             R.id.razasYPelajes -> {
                                 playNextLevel()
                                 Handler().postDelayed({
+                                    findViewById<ImageView>(R.id.confeti_anim)
+                                            .visibility = View.GONE
                                     setGameMode(sharedPref)
                                     gameMode.newGame()
                                 }, nextLevelDuration())
@@ -139,6 +141,8 @@ class Game: AppCompatActivity(), ExitDialog.ExitDialogListener, VictoryDialog.Vi
                             R.id.razasYPelajesJuntas -> {
                                 playNextLevel()
                                 Handler().postDelayed({
+                                    findViewById<ImageView>(R.id.confeti_anim)
+                                            .visibility = View.GONE
                                     setGameMode(sharedPref)
                                     gameMode.newGame()
                                 }, nextLevelDuration())
@@ -151,6 +155,8 @@ class Game: AppCompatActivity(), ExitDialog.ExitDialogListener, VictoryDialog.Vi
                             R.id.cruzas -> {
                                 playVictory()
                                 Handler().postDelayed({
+                                    findViewById<ImageView>(R.id.cup_anim)
+                                            .visibility = View.GONE
                                     victoryDialog()
                                 }, victoryDuration())
                             }
@@ -178,6 +184,7 @@ class Game: AppCompatActivity(), ExitDialog.ExitDialogListener, VictoryDialog.Vi
     private fun playNextLevel() {
         val img = findViewById<ImageView>(R.id.confeti_anim)
         val anim : AnimationDrawable = img.drawable as AnimationDrawable
+        img.visibility = View.VISIBLE
         img.post { anim.start() }
     }
 
@@ -195,7 +202,8 @@ class Game: AppCompatActivity(), ExitDialog.ExitDialogListener, VictoryDialog.Vi
 
     private fun playVictory() {
         val img = findViewById<ImageView>(R.id.cup_anim)
-        val anim : AnimationDrawable = img.drawable as AnimationDrawable
+        val anim = img.drawable as AnimationDrawable
+        img.visibility = View.VISIBLE
         img.post { anim.start() }
     }
 

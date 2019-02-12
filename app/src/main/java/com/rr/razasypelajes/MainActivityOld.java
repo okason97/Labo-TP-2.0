@@ -15,7 +15,7 @@ import java.io.Reader;
 import java.io.StringWriter;
 import java.io.Writer;
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivityOld extends AppCompatActivity {
 
     private String getJSONFromRaw(int res) {
         InputStream is = getResources().openRawResource(res);
@@ -37,7 +37,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void toConfig(View view) {
-        Intent intent = new Intent(this, ConfigActivity.class);
+        Intent intent = new Intent(this, ConfigActivityOld.class);
         startActivity(intent);
     }
 

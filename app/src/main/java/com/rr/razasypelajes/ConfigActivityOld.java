@@ -14,7 +14,7 @@ import java.util.HashSet;
 import java.util.Map;
 import java.util.Set;
 
-public class ConfigActivity extends AppCompatActivity {
+public class ConfigActivityOld extends AppCompatActivity {
     Switch levelSwitch;
     Switch sexSwitch;
     RadioGroup minijuegoRadio;

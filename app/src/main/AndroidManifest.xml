@@ -19,10 +19,10 @@
         </activity>
         <activity
             android:screenOrientation="landscape"
-            android:name=".Cruzas" />
+            android:name=".Game" />
         <activity
             android:screenOrientation="landscape"
-            android:name=".RazasPelajes" />
+            android:name=".Reconocimiento" />
         <activity
             android:screenOrientation="landscape"
             android:name=".ConfigActivity" />
