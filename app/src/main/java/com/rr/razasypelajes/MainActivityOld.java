@@ -44,13 +44,13 @@ public class MainActivityOld extends AppCompatActivity {
     public void onJugar(View view) {
         SharedPreferences sharedPref = getSharedPreferences(getString(R.string.config),Context.MODE_PRIVATE);
         Intent intent = new Intent(this, RazasPelajes.class);
-        System.out.println("config minijuego id: " + sharedPref.getInt(getString(R.string.minijuego), R.id.razasYPelajes));
+        System.out.println("config minijuego id: " + sharedPref.getInt(getString(R.string.minijuego), R.id.rypImagenPalabra));
         System.out.println("Cruzas id: " + R.id.Cruzas);
-        switch (sharedPref.getInt(getString(R.string.minijuego), R.id.razasYPelajes)){
-            case R.id.razasYPelajes:
+        switch (sharedPref.getInt(getString(R.string.minijuego), R.id.rypImagenPalabra)){
+            case R.id.rypImagenPalabra:
                 intent = new Intent(this, RazasPelajes.class);
                 break;
-            case R.id.razasYPelajesJuntas:
+            case R.id.rypPalabraImagen:
                 intent = new Intent(this, RazasPelajes.class);
                 break;
             case R.id.Cruzas:

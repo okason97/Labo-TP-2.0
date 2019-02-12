@@ -8,7 +8,7 @@ import android.support.v7.app.AppCompatActivity
 import android.view.View
 import android.widget.*
 
-class ConfigActivity : AppCompatActivity(), ExitConfigDialog.ExitConfigDialogListener {
+class ConfigActivity : AppCompatActivity(), DialogExitConfig.ExitConfigDialogListener {
     override fun onExitConfigDialogPositiveClick(dialog: DialogFragment) {
         // Save preferences
         saveValues()
@@ -39,7 +39,7 @@ class ConfigActivity : AppCompatActivity(), ExitConfigDialog.ExitConfigDialogLis
 
     fun goBack(view: View?){
         // Create an instance of the dialog fragment and show it
-        val dialog : DialogFragment = ExitDialog()
+        val dialog : DialogFragment = DialogExit()
         dialog.show(supportFragmentManager, "NoticeDialogFragment")
     }
 
@@ -76,7 +76,7 @@ class ConfigActivity : AppCompatActivity(), ExitConfigDialog.ExitConfigDialogLis
                 false)
 
         val currentMaxLevel = preferences.getInt(getString(R.string.lastLevel), 1)
-        when(preferences.getInt(getString(R.string.minijuego), R.id.razasYPelajes)){
+        when(preferences.getInt(getString(R.string.minijuego), R.id.rypImagenPalabra)){
             R.id.rypImagenPalabra -> {
                 if(currentMaxLevel > resources.getInteger(
                                 R.integer.firstRyPImagenPalabraLevel)){

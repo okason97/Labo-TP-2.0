@@ -49,11 +49,11 @@ public class ConfigActivityOld extends AppCompatActivity {
         sexSwitch.setChecked(preferences
                 .getBoolean(getString(R.string.sex), false));
         minijuegoRadio.check(preferences
-                .getInt(getString(R.string.minijuego), R.id.razasYPelajes));
+                .getInt(getString(R.string.minijuego), R.id.rypImagenPalabra));
         viewModeRadio.check(preferences
                 .getInt(getString(R.string.viewMode), R.id.lista));
         modoInteraccionRadio.check(preferences
-                .getInt(getString(R.string.modo_interaccion), R.id.interaccionB));
+                .getInt(getString(R.string.modo_interaccion), R.id.rypPalabraImagen));
 
         for (CheckBox checkBox : gameModeCheckBox.values()) checkBox.setChecked(false);
 

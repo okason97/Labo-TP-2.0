@@ -9,7 +9,7 @@ import android.support.v7.app.AppCompatActivity
 import android.view.View
 import com.rr.razasypelajes.horses.Horse
 
-class Reconocimiento : AppCompatActivity(), ExitDialog.ExitDialogListener {
+class Reconocimiento : AppCompatActivity(), DialogExit.ExitDialogListener {
     private val sounds : HashMap<String, MediaPlayer> = HashMap()
     private lateinit var mode : ReconMode
 
@@ -57,7 +57,7 @@ class Reconocimiento : AppCompatActivity(), ExitDialog.ExitDialogListener {
 
     fun goBack(view: View?){
         // Create an instance of the dialog fragment and show it
-        val dialog = ExitDialog() as DialogFragment
+        val dialog = DialogExit() as DialogFragment
         dialog.show(supportFragmentManager, "NoticeDialogFragment")
     }
 

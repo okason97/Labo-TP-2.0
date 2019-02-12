@@ -16,7 +16,18 @@ import android.widget.ImageView
 
 
 
-class Game: AppCompatActivity(), ExitDialog.ExitDialogListener, VictoryDialog.VictoryDialogListener {
+class Game: AppCompatActivity(), DialogExit.ExitDialogListener, DialogVictory.VictoryDialogListener, DialogDefeat.DefeatDialogListener {
+
+    override fun onDefeatDialogPositiveClick(dialog: DialogFragment) {
+        count = 0
+        victories = 0
+        gameMode.newGame()
+    }
+
+    override fun onDefeatDialogNegativeClick(dialog: DialogFragment) {
+        finish()
+    }
+
     private val sounds : HashMap<String, MediaPlayer> = HashMap()
     var answerViews : ArrayList<ConstraintLayout> = ArrayList()
     var answer : Int by Delegates.notNull()
@@ -28,7 +39,7 @@ class Game: AppCompatActivity(), ExitDialog.ExitDialogListener, VictoryDialog.Vi
     override fun onVictoryDialogNegativeClick(dialog: DialogFragment) {
         val editor : SharedPreferences.Editor = sharedPref.edit()
         editor.putInt(getString(R.string.minijuego),
-                R.id.razasYPelajes)
+                R.id.rypImagenPalabra)
         editor.putBoolean(getString(R.string.level), false)
         editor.apply()
         setGameMode()
@@ -58,8 +69,8 @@ class Game: AppCompatActivity(), ExitDialog.ExitDialogListener, VictoryDialog.Vi
     }
 
     private fun setGameMode(){
-        when(sharedPref.getInt(getString(R.string.modo_interaccion), R.id.interaccionA)){
-            R.id.interaccionA -> {
+        when(sharedPref.getInt(getString(R.string.modo_interaccion), R.id.rypImagenPalabra)){
+            R.id.rypImagenPalabra -> {
                 if (sharedPref.getBoolean(getString(R.string.level), false)){
                     addLevelOneAnswers()
                     setContentView(R.layout.interaccion_imagen_palabra_level1)
@@ -69,7 +80,7 @@ class Game: AppCompatActivity(), ExitDialog.ExitDialogListener, VictoryDialog.Vi
                 }
                 gameMode = InteraccionA(this)
             }
-            R.id.interaccionB -> {
+            R.id.rypPalabraImagen -> {
                 if (sharedPref.getBoolean(getString(R.string.level), false)){
                     addLevelOneAnswers()
                     setContentView(R.layout.interaccion_palabra_imagen_level1)
@@ -79,7 +90,7 @@ class Game: AppCompatActivity(), ExitDialog.ExitDialogListener, VictoryDialog.Vi
                 }
                 gameMode = InteraccionB(this)
             }
-            R.id.interaccionC -> {
+            R.id.cruzas -> {
                 if (sharedPref.getBoolean(getString(R.string.level), false)){
                     addLevelOneAnswers()
                     setContentView(R.layout.interaccion_imagen_imagen_level1)
@@ -122,8 +133,8 @@ class Game: AppCompatActivity(), ExitDialog.ExitDialogListener, VictoryDialog.Vi
                     val editor : SharedPreferences.Editor
                     if (sharedPref.getBoolean(getString(R.string.level), false)){
                         when (sharedPref.getInt(getString(R.string.minijuego),
-                                R.id.razasYPelajes)){
-                            R.id.razasYPelajes -> {
+                                R.id.rypImagenPalabra)){
+                            R.id.rypImagenPalabra -> {
                                 playNextLevel()
                                 Handler().postDelayed({
                                     findViewById<ImageView>(R.id.confeti_anim)
@@ -133,14 +144,14 @@ class Game: AppCompatActivity(), ExitDialog.ExitDialogListener, VictoryDialog.Vi
                                 }, nextLevelDuration())
                                 editor = sharedPref.edit()
                                 editor.putInt(getString(R.string.minijuego),
-                                        R.id.razasYPelajesJuntas)
+                                        R.id.rypPalabraImagen)
                                 editor.putBoolean(getString(R.string.level), false)
                                 if (currentLevel < resources.getInteger(R.integer.firstRyPJLevel)){
                                     editor.putInt(getString(R.string.lastLevel), currentLevel+1)
                                 }
                                 editor.apply()
                             }
-                            R.id.razasYPelajesJuntas -> {
+                            R.id.rypPalabraImagen -> {
                                 playNextLevel()
                                 Handler().postDelayed({
                                     findViewById<ImageView>(R.id.confeti_anim)
@@ -183,7 +194,7 @@ class Game: AppCompatActivity(), ExitDialog.ExitDialogListener, VictoryDialog.Vi
                 }, correctDuration())
             }else{
                 // Create an instance of the dialog fragment and show it
-                val dialog : DialogFragment = VictoryDialog()
+                val dialog : DialogFragment = DialogDefeat()
                 dialog.show(supportFragmentManager, "Fin del juego")
             }
         }
@@ -205,8 +216,8 @@ class Game: AppCompatActivity(), ExitDialog.ExitDialogListener, VictoryDialog.Vi
 
     private fun victoryDialog() {
         // Create an instance of the dialog fragment and show it
-        val dialog : DialogFragment = VictoryDialog()
-        dialog.show(supportFragmentManager, "NoticeDialogFragment")
+        val dialog : DialogFragment = DialogVictory()
+        dialog.show(supportFragmentManager, "Victoria")
     }
 
     private fun victoryDuration(): Long {
@@ -246,7 +257,7 @@ class Game: AppCompatActivity(), ExitDialog.ExitDialogListener, VictoryDialog.Vi
 
     fun goBack(view: View?){
         // Create an instance of the dialog fragment and show it
-        val dialog : DialogFragment = ExitDialog()
-        dialog.show(supportFragmentManager, "NoticeDialogFragment")
+        val dialog : DialogFragment = DialogExit()
+        dialog.show(supportFragmentManager, "Salir")
     }
 }

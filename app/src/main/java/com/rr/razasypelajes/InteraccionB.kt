@@ -10,24 +10,19 @@ import java.util.*
 // interaccion_palabra_imagen
 class InteraccionB(private val context : Game): GameMode(context){
     override fun newGame() {
-        val horses = JSONHelper.fromJSON(Horse::class.java, context.resources.openRawResource(R.raw.horses))
-        horses.shuffle()
+        var horses = JSONHelper.fromJSON(Horse::class.java, context.resources.openRawResource(R.raw.horses))
+        horses = horses.shuffled()
         val r = Random()
         val sharedPref : SharedPreferences = context.getSharedPreferences(
                 context.getString(R.string.config), Context.MODE_PRIVATE);
         val razaOexclusivoPelaje = r.nextBoolean()
         val questionMode : QuestionMode
-        questionMode = if (sharedPref.getInt(context.getString(R.string.minijuego), R.id.razasYPelajes) ==
-                R.id.razasYPelajes){
-            if (razaOexclusivoPelaje){
-                // raza
-                QuestionRaza()
-            }else{
-                // pelaje
-                QuestionPelaje()
-            }
+        questionMode = if (razaOexclusivoPelaje){
+            // raza
+            QuestionRaza()
         }else{
-            QuestionRazaYPelaje()
+            // pelaje
+            QuestionPelaje()
         }
         val chosenHorses : List<Horse>
         chosenHorses = questionMode.chooseHorses(horses, context.answerViews.size)

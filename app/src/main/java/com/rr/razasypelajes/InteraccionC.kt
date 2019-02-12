@@ -15,11 +15,11 @@ class InteraccionC(private val context : Game): GameMode(context) {
                 context.resources.openRawResource(R.raw.padres))
         val answerIndex = r.nextInt(cruzas.size)
         val chosenHorses : List<Horse>
-        val horses = JSONHelper.fromJSON(Horse::class.java,
+        var horses = JSONHelper.fromJSON(Horse::class.java,
                 context.resources.openRawResource(R.raw.horses))
-        horses.shuffle()
+        horses = horses.shuffled()
         chosenHorses = chooseHorses(horses, context.answerViews.size,
-                cruzas[answerIndex].cruza)
+                cruzas[answerIndex].cruza as String)
         var id: Int
         for (i in  0..chosenHorses.size) {
             id = context.resources.getIdentifier(chosenHorses[i].img, "drawable",
