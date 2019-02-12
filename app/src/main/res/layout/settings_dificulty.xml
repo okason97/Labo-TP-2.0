@@ -26,6 +26,7 @@
         android:layout_marginLeft="8dp"
         android:layout_marginTop="32dp"
         android:layout_marginBottom="24dp"
+        android:enabled="false"
         android:switchMinWidth="64dp"
         android:switchPadding="32dp"
         android:text="Fácil"
@@ -40,6 +41,7 @@
         android:layout_height="26dp"
         android:layout_marginStart="32dp"
         android:layout_marginLeft="32dp"
+        android:enabled="false"
         android:text="Dificil"
         app:layout_constraintStart_toEndOf="@+id/settingsDificultySwitch"
         app:layout_constraintTop_toTopOf="@+id/settingsDificultySwitch" />
