@@ -1,6 +1,6 @@
 package com.rr.razasypelajes
 
-import com.rr.razasypelajes.Horses.Horse
+import com.rr.razasypelajes.horses.Horse
 
 class QuestionRazaYPelaje : QuestionMode() {
     override fun getPrettyData(horse: Horse): String {

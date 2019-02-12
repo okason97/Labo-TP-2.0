@@ -1,9 +1,9 @@
 package com.rr.razasypelajes
 
 import android.widget.ImageView
-import com.rr.razasypelajes.Helpers.JSONHelper
-import com.rr.razasypelajes.Horses.Horse
-import com.rr.razasypelajes.Horses.Padres
+import com.rr.razasypelajes.helpers.JSONHelper
+import com.rr.razasypelajes.horses.Horse
+import com.rr.razasypelajes.horses.Padres
 import java.util.*
 import kotlin.collections.ArrayList
 
