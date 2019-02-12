@@ -20,32 +20,53 @@ class ConfigActivity : AppCompatActivity(), DialogExitConfig.ExitConfigDialogLis
         finish()
     }
 
-    private val preferences : SharedPreferences = getSharedPreferences(getString(R.string.config), Context.MODE_PRIVATE)
+    private lateinit var preferences : SharedPreferences
 
     // Recon
-    private val reconRadio : RadioGroup = findViewById(R.id.settingsReconGroup)
-    private val reconRyP : CheckBox = findViewById(R.id.settingsReconRyP)
-    private val reconCruza: CheckBox = findViewById(R.id.settingsReconCruza)
+    private lateinit var reconRadio : RadioGroup
+    private lateinit var reconRyP : CheckBox
+    private lateinit var reconCruza: CheckBox
 
     // Minigame
-    private val minigameRadio : RadioGroup = findViewById(R.id.settingsMinigameGroup)
+    private lateinit var minigameRadio : RadioGroup
 
     // Dificulty
-    private val dificultySwitch: Switch = findViewById(R.id.settingsDificultySwitch)
-    private val dificultyText : TextView = findViewById(R.id.settingsDificultyText)
+    private lateinit var dificultySwitch: Switch
+    private lateinit var dificultyText : TextView
 
     // Audio
-    private val audioSwitch : Switch = findViewById(R.id.settingsAudioSwitch)
+    private lateinit var audioSwitch : Switch
 
     fun goBack(view: View?){
         // Create an instance of the dialog fragment and show it
-        val dialog : DialogFragment = DialogExit()
+        val dialog : DialogFragment = DialogExitConfig()
         dialog.show(supportFragmentManager, "NoticeDialogFragment")
+    }
+
+    private fun initValues() {
+        preferences = getSharedPreferences(getString(R.string.config), Context.MODE_PRIVATE)
+
+        reconRadio = findViewById(R.id.settingsReconGroup)
+        reconRyP = findViewById(R.id.settingsReconRyP)
+        reconCruza = findViewById(R.id.settingsReconCruza)
+
+        // Minigame
+        minigameRadio = findViewById(R.id.settingsMinigameGroup)
+
+        // Dificulty
+        dificultySwitch = findViewById(R.id.settingsDificultySwitch)
+        dificultyText = findViewById(R.id.settingsDificultyText)
+
+        // Audio
+        audioSwitch = findViewById(R.id.settingsAudioSwitch)
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.settings)
+
+        setContentView(R.layout.settings3)
+
+        initValues()
 
         // Load from preferences
         loadValues()
@@ -53,33 +74,26 @@ class ConfigActivity : AppCompatActivity(), DialogExitConfig.ExitConfigDialogLis
 
     private fun loadValues() {
         // Recon
-        reconRadio.check(preferences.getInt(getString(R.string.reconRadio),
-                R.id.lista))
+        reconRadio.check(preferences.getInt(getString(R.string.reconRadio), R.id.lista))
 
-        reconRyP.isChecked = preferences.getBoolean(getString(R.string.reconRyP),
-                false)
-        reconCruza.isChecked = preferences.getBoolean(getString(R.string.reconCruza),
-                false)
+        reconRyP.isChecked = preferences.getBoolean(getString(R.string.reconRyP), false)
+        reconCruza.isChecked = preferences.getBoolean(getString(R.string.reconCruza), false)
 
         if (!(reconRyP.isChecked && reconCruza.isChecked)) reconRyP.isChecked = true
 
         // Minigame
-        minigameRadio.check(preferences.getInt(getString(R.string.minijuego),
-                R.id.rypImagenPalabra))
+        minigameRadio.check(preferences.getInt(getString(R.string.minijuego), R.id.rypImagenPalabra))
 
         // Dificulty
-        dificultySwitch.isChecked = preferences.getBoolean(
-                getString(R.string.level), false)
+        dificultySwitch.isChecked = preferences.getBoolean(getString(R.string.level), false)
 
         // Audio
-        audioSwitch.isChecked = preferences.getBoolean(getString(R.string.audioSwitch),
-                false)
+        audioSwitch.isChecked = preferences.getBoolean(getString(R.string.audioSwitch), false)
 
         val currentMaxLevel = preferences.getInt(getString(R.string.lastLevel), 1)
         when(preferences.getInt(getString(R.string.minijuego), R.id.rypImagenPalabra)){
             R.id.rypImagenPalabra -> {
-                if(currentMaxLevel > resources.getInteger(
-                                R.integer.firstRyPImagenPalabraLevel)){
+                if(currentMaxLevel > resources.getInteger(R.integer.firstRyPImagenPalabraLevel)){
                     dificultySwitch.isEnabled = true
                     dificultySwitch.isClickable = true
                     dificultyText.isEnabled = true

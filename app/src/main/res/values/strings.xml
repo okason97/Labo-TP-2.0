@@ -60,4 +60,5 @@
     <string name="dificultySwitch">dificultySwitch</string>
     <string name="accept_config">Aceptar y Salir</string>
     <string name="cancel_config">Salir sin guardar</string>
+    <string name="horse_image">Horse image</string>
 </resources>
