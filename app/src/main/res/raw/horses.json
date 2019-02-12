@@ -1,27 +1,32 @@
 [
   {
-    "raza":"raza1",
-    "pelaje":"pelaje1",
+    "raza":"cuarto_de_milla",
+    "pelaje":"bayo",
     "image":"horse1"
   },
   {
-    "raza":"raza2",
-    "pelaje":"pelaje2",
+    "raza":"criollo",
+    "pelaje":"picaso",
     "image":"horse2"
   },
   {
-    "raza":"raza3",
-    "pelaje":"pelaje3",
+    "raza":"mestizo",
+    "pelaje":"tordillo_canela",
     "image":"horse3"
   },
   {
-    "raza":"raza4",
-    "pelaje":"pelaje4",
+    "raza":"mestizo",
+    "pelaje":"tobiano",
     "image":"horse1"
   },
   {
-    "raza":"raza5",
-    "pelaje":"pelaje5",
+    "raza":"mestizo_con_criollo",
+    "pelaje":"overo_azulejo",
+    "image":"horse5"
+  },
+  {
+    "raza":"cruzarabe",
+    "pelaje":"alazan_ruano",
     "image":"horse5"
   }
 ]
