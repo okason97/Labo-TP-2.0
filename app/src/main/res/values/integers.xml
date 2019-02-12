@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <integer name="confettiFrameDuration">25</integer>
+    <integer name="confettiFramesSize">71</integer>
+    <integer name="cupFrameDuration">25</integer>
+    <integer name="cupFramesSize">80</integer>
+    <integer name="firstRyPJLevel">3</integer>
+    <integer name="firstCruzasLevel">5</integer>
+    <integer name="firstRyPLevel">1</integer>
+    <integer name="firstRyPImagenPalabraLevel">1</integer>
+    <integer name="firstRyPPalabraImagenLevel">3</integer>
+</resources>
