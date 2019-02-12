@@ -38,7 +38,7 @@ public class ConfigActivity extends AppCompatActivity {
         levelSwitch = findViewById(R.id.Level);
         sexSwitch = findViewById(R.id.Sex);
         minijuegoRadio = findViewById(R.id.Minijuego);
-        viewModeRadio = findViewById(R.id.reconSwitch);
+        viewModeRadio = findViewById(R.id.settingsReconGroup);
         gameModeCheckBox.put(getString(R.string.razas), (CheckBox)findViewById(R.id.RazasCheckbox));
         gameModeCheckBox.put(getString(R.string.pelajes), (CheckBox)findViewById(R.id.PelajesCheckbox));
         gameModeCheckBox.put(getString(R.string.cruzas), (CheckBox)findViewById(R.id.CruzasCheckbox));
