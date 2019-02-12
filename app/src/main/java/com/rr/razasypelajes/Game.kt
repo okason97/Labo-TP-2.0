@@ -17,7 +17,6 @@ import android.widget.ImageView
 
 
 class Game: AppCompatActivity(), DialogExit.ExitDialogListener, DialogVictory.VictoryDialogListener, DialogDefeat.DefeatDialogListener {
-
     override fun onDefeatDialogPositiveClick(dialog: DialogFragment) {
         count = 0
         victories = 0
@@ -34,7 +33,7 @@ class Game: AppCompatActivity(), DialogExit.ExitDialogListener, DialogVictory.Vi
     private lateinit var gameMode : GameMode
     private var count = 0
     private var victories = 0
-    private val sharedPref = getSharedPreferences(getString(R.string.config), Context.MODE_PRIVATE)
+    private lateinit var sharedPref : SharedPreferences
 
     override fun onVictoryDialogNegativeClick(dialog: DialogFragment) {
         val editor : SharedPreferences.Editor = sharedPref.edit()
@@ -62,6 +61,9 @@ class Game: AppCompatActivity(), DialogExit.ExitDialogListener, DialogVictory.Vi
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+
+        sharedPref = getSharedPreferences(getString(R.string.config), Context.MODE_PRIVATE)
+
         initializeSounds()
         setGameMode()
         gameMode.newGame()

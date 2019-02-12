@@ -23,7 +23,7 @@ class JSONHelper {
         fun <T : JSONBuildable> fromJSON(tClass: Class<T>, inputStream: InputStream): List<T> {
             val list = ArrayList<T>()
             val arr = getJSON(inputStream)
-            for (i in 0..arr.length()) {
+            for (i in 0 until arr.length()) {
                 val current = arr.getJSONObject(i)
                 val constructor = tClass.getDeclaredConstructor(JSONObject::class.java) as Constructor<T>
                 list.add(constructor.newInstance(current))
