@@ -6,6 +6,9 @@
     android:layout_height="match_parent">
 
     <include
+        android:id="@+id/animations" layout="@layout/animations" />
+
+    <include
         android:id="@+id/question"
         layout="@layout/image_question" />
 
