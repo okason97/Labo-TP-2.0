@@ -9,7 +9,7 @@ import android.view.ViewGroup
 import android.widget.ImageButton
 import android.widget.ImageView
 import android.widget.TextView
-import com.rr.razasypelajes.Horses.Horse
+import com.rr.razasypelajes.horses.Horse
 
 class AdapterGrid(var context: Reconocimiento): RecyclerView.Adapter<AdapterGrid.ViewHolder>() {
 

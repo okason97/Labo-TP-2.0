@@ -7,7 +7,7 @@ import android.os.Bundle
 import android.support.v4.app.DialogFragment
 import android.support.v7.app.AppCompatActivity
 import android.view.View
-import com.rr.razasypelajes.Horses.Horse
+import com.rr.razasypelajes.horses.Horse
 
 class Reconocimiento : AppCompatActivity(), ExitDialog.ExitDialogListener {
     private val sounds : HashMap<String, MediaPlayer> = HashMap()

@@ -4,7 +4,7 @@ import android.content.Context
 import android.media.MediaPlayer
 import android.widget.Button
 import android.widget.TextView
-import com.rr.razasypelajes.Horses.Horse
+import com.rr.razasypelajes.horses.Horse
 
 abstract class QuestionMode {
     fun chooseHorses(horses: List<Horse>, size: Int): List<Horse>{

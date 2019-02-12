@@ -4,9 +4,8 @@ import android.content.Context
 import android.content.SharedPreferences
 import android.media.MediaPlayer
 import android.widget.ImageView
-import android.widget.TextView
-import com.rr.razasypelajes.Helpers.JSONHelper
-import com.rr.razasypelajes.Horses.Horse
+import com.rr.razasypelajes.helpers.JSONHelper
+import com.rr.razasypelajes.horses.Horse
 import java.util.*
 
 // interaccion_imagen_palabra
