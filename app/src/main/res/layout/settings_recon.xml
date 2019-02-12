@@ -6,7 +6,7 @@
     android:layout_height="wrap_content">
 
     <TextView
-        android:id="@+id/textView2"
+        android:id="@+id/settingsReconTitle"
         style="@android:style/TextAppearance.DeviceDefault.Large"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -18,15 +18,15 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <RadioGroup
-        android:id="@+id/reconSwitch"
+        android:id="@+id/settingsReconGroup"
         android:layout_width="306dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
         android:layout_marginLeft="8dp"
         android:layout_marginTop="32dp"
         android:orientation="horizontal"
-        app:layout_constraintStart_toStartOf="@+id/textView2"
-        app:layout_constraintTop_toBottomOf="@+id/textView2">
+        app:layout_constraintStart_toStartOf="@+id/settingsReconTitle"
+        app:layout_constraintTop_toBottomOf="@+id/settingsReconTitle">
 
         <RadioButton
             android:id="@+id/lista"
@@ -48,7 +48,7 @@
     </RadioGroup>
 
     <CheckBox
-        android:id="@+id/rypCheckbox"
+        android:id="@+id/settingsReconRyP"
         style="@android:style/TextAppearance.DeviceDefault.Medium"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -56,19 +56,19 @@
         android:layout_marginBottom="24dp"
         android:text="Razas y Pelajes"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="@+id/reconSwitch"
-        app:layout_constraintTop_toBottomOf="@+id/reconSwitch" />
+        app:layout_constraintStart_toStartOf="@+id/settingsReconGroup"
+        app:layout_constraintTop_toBottomOf="@+id/settingsReconGroup" />
 
     <CheckBox
-        android:id="@+id/cruzasCheckbox"
+        android:id="@+id/settingsReconCruza"
         style="@android:style/TextAppearance.DeviceDefault.Medium"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="32dp"
         android:layout_marginLeft="32dp"
         android:text="Cruzas"
-        app:layout_constraintBottom_toBottomOf="@+id/rypCheckbox"
-        app:layout_constraintStart_toEndOf="@+id/rypCheckbox"
-        app:layout_constraintTop_toTopOf="@+id/rypCheckbox" />
+        app:layout_constraintBottom_toBottomOf="@+id/settingsReconRyP"
+        app:layout_constraintStart_toEndOf="@+id/settingsReconRyP"
+        app:layout_constraintTop_toTopOf="@+id/settingsReconRyP" />
 
 </android.support.constraint.ConstraintLayout>

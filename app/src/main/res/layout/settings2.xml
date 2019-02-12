@@ -39,7 +39,7 @@
                         app:layout_constraintTop_toTopOf="parent" />
 
                     <RadioGroup
-                        android:id="@+id/reconSwitch"
+                        android:id="@+id/settingsReconGroup"
                         android:layout_width="306dp"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="10dp"
@@ -71,8 +71,8 @@
                         android:layout_height="wrap_content"
                         android:layout_marginTop="25dp"
                         android:text="Razas y Pelajes"
-                        app:layout_constraintStart_toStartOf="@+id/reconSwitch"
-                        app:layout_constraintTop_toBottomOf="@+id/reconSwitch" />
+                        app:layout_constraintStart_toStartOf="@+id/settingsReconGroup"
+                        app:layout_constraintTop_toBottomOf="@+id/settingsReconGroup" />
 
                     <CheckBox
                         android:id="@+id/CruzasCheckbox"

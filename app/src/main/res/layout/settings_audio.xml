@@ -6,7 +6,7 @@
     android:layout_height="wrap_content">
 
     <TextView
-        android:id="@+id/textView5"
+        android:id="@+id/settingsAudioTitle"
         style="@android:style/TextAppearance.DeviceDefault.Large"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -18,7 +18,7 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <Switch
-        android:id="@+id/audioSwitch"
+        android:id="@+id/settingsAudioSwitch"
         style="@android:style/TextAppearance.DeviceDefault.Medium"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -30,17 +30,17 @@
         android:switchPadding="32dp"
         android:text="Masculina"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="@+id/textView5"
-        app:layout_constraintTop_toBottomOf="@+id/textView5" />
+        app:layout_constraintStart_toStartOf="@+id/settingsAudioTitle"
+        app:layout_constraintTop_toBottomOf="@+id/settingsAudioTitle" />
 
     <TextView
-        android:id="@+id/textView6"
+        android:id="@+id/settingsAudioText"
         style="@android:style/TextAppearance.DeviceDefault.Medium"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="32dp"
         android:layout_marginLeft="32dp"
         android:text="@string/femenina"
-        app:layout_constraintStart_toEndOf="@+id/audioSwitch"
-        app:layout_constraintTop_toTopOf="@+id/audioSwitch" />
+        app:layout_constraintStart_toEndOf="@+id/settingsAudioSwitch"
+        app:layout_constraintTop_toTopOf="@+id/settingsAudioSwitch" />
 </android.support.constraint.ConstraintLayout>
