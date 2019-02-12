@@ -17,14 +17,21 @@ import android.widget.ImageView
 
 
 class Game: AppCompatActivity(), ExitDialog.ExitDialogListener, VictoryDialog.VictoryDialogListener {
+    private val sounds : HashMap<String, MediaPlayer> = HashMap()
+    var answerViews : ArrayList<ConstraintLayout> = ArrayList()
+    var answer : Int by Delegates.notNull()
+    private lateinit var gameMode : GameMode
+    private var count = 0
+    private var victories = 0
+    private val sharedPref = getSharedPreferences(getString(R.string.config), Context.MODE_PRIVATE)
+
     override fun onVictoryDialogNegativeClick(dialog: DialogFragment) {
-        val sharedPref = getSharedPreferences(getString(R.string.config), Context.MODE_PRIVATE)
         val editor : SharedPreferences.Editor = sharedPref.edit()
         editor.putInt(getString(R.string.minijuego),
                 R.id.razasYPelajes)
         editor.putBoolean(getString(R.string.level), false)
         editor.apply()
-        setGameMode(sharedPref)
+        setGameMode()
         gameMode.newGame()
     }
 
@@ -36,13 +43,6 @@ class Game: AppCompatActivity(), ExitDialog.ExitDialogListener, VictoryDialog.Vi
         finish()
     }
 
-    private val sounds : HashMap<String, MediaPlayer> = HashMap()
-    var answerViews : ArrayList<ConstraintLayout> = ArrayList()
-    var answer : Int by Delegates.notNull()
-    private lateinit var gameMode : GameMode
-    private var count = 0
-    private var victories = 0
-
     private fun initializeSounds() {
         sounds[getString(R.string.horse_sound_key)] = MediaPlayer.create(this, R.raw.horse_sound)
         sounds[getString(R.string.error_sound_key)] = MediaPlayer.create(this, R.raw.error_sound)
@@ -52,13 +52,12 @@ class Game: AppCompatActivity(), ExitDialog.ExitDialogListener, VictoryDialog.Vi
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         initializeSounds()
-        val sharedPref = getSharedPreferences(getString(R.string.config), Context.MODE_PRIVATE)
-        setGameMode(sharedPref)
+        setGameMode()
         gameMode.newGame()
         count++
     }
 
-    private fun setGameMode(sharedPref : SharedPreferences){
+    private fun setGameMode(){
         when(sharedPref.getInt(getString(R.string.modo_interaccion), R.id.interaccionA)){
             R.id.interaccionA -> {
                 if (sharedPref.getBoolean(getString(R.string.level), false)){
@@ -118,8 +117,8 @@ class Game: AppCompatActivity(), ExitDialog.ExitDialogListener, VictoryDialog.Vi
                     gameMode.newGame()
                 }, correctDuration())
             }else{
+                val currentLevel = sharedPref.getInt(getString(R.string.lastLevel),1)
                 if (victories >= 3){
-                    val sharedPref = getSharedPreferences(getString(R.string.config), Context.MODE_PRIVATE)
                     val editor : SharedPreferences.Editor
                     if (sharedPref.getBoolean(getString(R.string.level), false)){
                         when (sharedPref.getInt(getString(R.string.minijuego),
@@ -129,13 +128,16 @@ class Game: AppCompatActivity(), ExitDialog.ExitDialogListener, VictoryDialog.Vi
                                 Handler().postDelayed({
                                     findViewById<ImageView>(R.id.confeti_anim)
                                             .visibility = View.GONE
-                                    setGameMode(sharedPref)
+                                    setGameMode()
                                     gameMode.newGame()
                                 }, nextLevelDuration())
                                 editor = sharedPref.edit()
                                 editor.putInt(getString(R.string.minijuego),
                                         R.id.razasYPelajesJuntas)
                                 editor.putBoolean(getString(R.string.level), false)
+                                if (currentLevel < resources.getInteger(R.integer.firstRyPJLevel)){
+                                    editor.putInt(getString(R.string.lastLevel), currentLevel+1)
+                                }
                                 editor.apply()
                             }
                             R.id.razasYPelajesJuntas -> {
@@ -143,13 +145,16 @@ class Game: AppCompatActivity(), ExitDialog.ExitDialogListener, VictoryDialog.Vi
                                 Handler().postDelayed({
                                     findViewById<ImageView>(R.id.confeti_anim)
                                             .visibility = View.GONE
-                                    setGameMode(sharedPref)
+                                    setGameMode()
                                     gameMode.newGame()
                                 }, nextLevelDuration())
                                 editor = sharedPref.edit()
                                 editor.putInt(getString(R.string.minijuego),
                                         R.id.cruzas)
                                 editor.putBoolean(getString(R.string.level), false)
+                                if (currentLevel < resources.getInteger(R.integer.firstCruzasLevel)){
+                                    editor.putInt(getString(R.string.lastLevel), currentLevel+1)
+                                }
                                 editor.apply()
                             }
                             R.id.cruzas -> {
@@ -164,6 +169,7 @@ class Game: AppCompatActivity(), ExitDialog.ExitDialogListener, VictoryDialog.Vi
                     }else{
                         editor = sharedPref.edit()
                         editor.putBoolean(getString(R.string.level), true)
+                        editor.putInt(getString(R.string.lastLevel), currentLevel+1)
                         editor.apply()
                     }
                 }
@@ -176,8 +182,8 @@ class Game: AppCompatActivity(), ExitDialog.ExitDialogListener, VictoryDialog.Vi
     }
 
     private fun nextLevelDuration(): Long {
-        val frameDuration : Long = 25
-        val framesSize : Long = 71
+        val frameDuration : Long = resources.getInteger(R.integer.confettiFrameDuration).toLong()
+        val framesSize : Long = resources.getInteger(R.integer.confettiFramesSize).toLong()
         return frameDuration*framesSize
     }
 
@@ -195,8 +201,8 @@ class Game: AppCompatActivity(), ExitDialog.ExitDialogListener, VictoryDialog.Vi
     }
 
     private fun victoryDuration(): Long {
-        val frameDuration : Long = 25
-        val framesSize : Long = 80
+        val frameDuration : Long = resources.getInteger(R.integer.cupFrameDuration).toLong()
+        val framesSize : Long = resources.getInteger(R.integer.cupFramesSize).toLong()
         return frameDuration*framesSize
     }
 
