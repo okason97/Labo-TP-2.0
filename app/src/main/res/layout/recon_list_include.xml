@@ -20,6 +20,18 @@
         app:layout_constraintTop_toTopOf="parent"
         app:srcCompat="@android:drawable/ic_menu_myplaces" />
 
+    <TextView
+        android:id="@+id/listItemText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:maxWidth="125dp"
+        android:text="@string/placeholder"
+        app:layout_constraintBottom_toTopOf="@+id/listItemAudio"
+        app:layout_constraintEnd_toEndOf="@+id/listItemAudio"
+        app:layout_constraintStart_toStartOf="@+id/listItemAudio"
+        app:layout_constraintTop_toTopOf="@+id/listItemImage" />
+
     <ImageButton
         android:id="@+id/listItemAudio"
         android:layout_width="50dp"
@@ -37,17 +49,6 @@
         app:layout_constraintStart_toEndOf="@+id/listItemImage"
         app:layout_constraintTop_toBottomOf="@+id/listItemText"
         app:srcCompat="@drawable/audio_regular" />
-
-    <TextView
-        android:id="@+id/listItemText"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
-        android:text="@string/placeholder"
-        app:layout_constraintBottom_toTopOf="@+id/listItemAudio"
-        app:layout_constraintEnd_toEndOf="@+id/listItemAudio"
-        app:layout_constraintStart_toStartOf="@+id/listItemAudio"
-        app:layout_constraintTop_toTopOf="@+id/listItemImage" />
 
     <TextView
         android:id="@+id/listItemBigText"

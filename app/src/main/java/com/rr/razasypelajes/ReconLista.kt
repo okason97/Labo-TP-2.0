@@ -4,7 +4,7 @@ import android.support.v7.widget.LinearLayoutManager
 import android.support.v7.widget.RecyclerView
 
 class ReconLista(var context: Reconocimiento) : ReconMode {
-    private var recycler : RecyclerView = context.findViewById(R.id.listRecycler)
+    private lateinit var recycler : RecyclerView
     private var adapter : AdapterList = AdapterList(context)
 
     override fun runRecon() {
@@ -13,6 +13,7 @@ class ReconLista(var context: Reconocimiento) : ReconMode {
     }
 
     private fun initRecyclerView() {
+        recycler = context.findViewById(R.id.listRecycler)
         recycler.adapter = adapter
         recycler.layoutManager = LinearLayoutManager(context)
     }

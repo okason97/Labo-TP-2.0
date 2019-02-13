@@ -24,8 +24,10 @@ class Reconocimiento : AppCompatActivity(), DialogExit.ExitDialogListener {
         val hCol = JSONHelper.fromJSON(Horse::class.java, resources.openRawResource(R.raw.horses))
         horses.addAll(hCol)
         for (h in hCol) {
-            val id = resources.getIdentifier("sound_" + h.raza, "raw", packageName)
-            sounds.add(MediaPlayer.create(this, id))
+            try {
+                val id = resources.getIdentifier("sound_" + h.raza, "raw", packageName)
+                sounds.add(MediaPlayer.create(this, id))
+            } catch (e: Exception) { println("Horse: $h. E: $e") }
         }
     }
 
@@ -45,7 +47,7 @@ class Reconocimiento : AppCompatActivity(), DialogExit.ExitDialogListener {
     }
 
     private fun setReconMode(sharedPref: SharedPreferences){
-        val viewMode = sharedPref.getInt(getString(R.string.viewMode), R.id.lista)
+        val viewMode = sharedPref.getInt(getString(R.string.reconRadio), R.id.lista)
         mode = if (viewMode == R.id.lista) ReconLista(this) else ReconGrilla(this)
     }
 

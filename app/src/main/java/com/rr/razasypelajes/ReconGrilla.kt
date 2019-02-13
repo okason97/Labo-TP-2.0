@@ -4,7 +4,7 @@ import android.support.v7.widget.GridLayoutManager
 import android.support.v7.widget.RecyclerView
 
 class ReconGrilla(var context: Reconocimiento) : ReconMode {
-    private var recycler : RecyclerView = context.findViewById(R.id.gridRecycler)
+    private lateinit var recycler : RecyclerView
     private var adapter : AdapterGrid = AdapterGrid(context)
 
     override fun runRecon() {
@@ -13,6 +13,7 @@ class ReconGrilla(var context: Reconocimiento) : ReconMode {
     }
 
     private fun initRecyclerView() {
+        recycler = context.findViewById(R.id.gridRecycler)
         recycler.adapter = adapter
         recycler.layoutManager = GridLayoutManager(context, 3)
     }
