@@ -38,10 +38,11 @@
 
             <LinearLayout
                 android:id="@+id/answer1"
-                android:onClick="selectedAnswer"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
+                android:clickable="true"
+                android:onClick="selectedAnswer"
                 android:orientation="vertical">
 
                 <include
@@ -53,10 +54,11 @@
 
             <LinearLayout
                 android:id="@+id/answer2"
-                android:onClick="selectedAnswer"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
+                android:clickable="false"
+                android:onClick="selectedAnswer"
                 android:orientation="vertical">
 
                 <include
@@ -67,10 +69,11 @@
 
             <LinearLayout
                 android:id="@+id/answer3"
-                android:onClick="selectedAnswer"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
+                android:clickable="true"
+                android:onClick="selectedAnswer"
                 android:orientation="vertical">
 
                 <include
@@ -82,10 +85,11 @@
 
             <LinearLayout
                 android:id="@+id/answer4"
-                android:onClick="selectedAnswer"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
+                android:clickable="true"
+                android:onClick="selectedAnswer"
                 android:orientation="vertical">
 
                 <include
