@@ -13,25 +13,27 @@ import com.rr.razasypelajes.horses.Horse
 
 class AdapterList(var context: Reconocimiento): RecyclerView.Adapter<AdapterList.ViewHolder>() {
 
-    private var dataSource: List<Horse> = context.horses
-    private var sound = MediaPlayer.create(context, R.raw.horse_sound) as MediaPlayer
+    private var horses: List<Horse> = context.horses
+    private var sounds: List<MediaPlayer> = context.sounds
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
-        val view: View = LayoutInflater.from(parent.context).inflate(R.layout.recon_list_include, parent, false)
+        val view: View = LayoutInflater
+                .from(parent.context)
+                .inflate(R.layout.recon_list_include, parent, false)
+
         return ViewHolder(view)
     }
 
     override fun getItemCount(): Int {
-        return dataSource.size
+        return horses.size
     }
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
-        val horse = dataSource[position]
-        holder.image.setImageResource(R.drawable.horse1)
-        holder.audio.setOnClickListener { sound.start() }
-        holder.texto.text = horse.raza
-        holder.bigText.text = context.resources.getText(R.string.loreipsum)
-        // TODO("Agregar imagen, sonido y texto grande, los que estan son placeholders")
+        val horse = horses[position]
+        holder.image.setImageResource(horse.getImageId(context))
+        holder.audio.setOnClickListener { sounds[position].start() }
+        holder.texto.text = horse.prettyRaza()
+        holder.bigText.text = context.resources.getText(R.string.loreipsum) // TODO
     }
 
 

@@ -7,38 +7,41 @@ import android.os.Bundle
 import android.support.v4.app.DialogFragment
 import android.support.v7.app.AppCompatActivity
 import android.view.View
+import com.rr.razasypelajes.helpers.JSONHelper
 import com.rr.razasypelajes.horses.Horse
 
 class Reconocimiento : AppCompatActivity(), DialogExit.ExitDialogListener {
-    private val sounds : HashMap<String, MediaPlayer> = HashMap()
     private lateinit var mode : ReconMode
 
-    var horses : List<Horse> = ArrayList()
+    val horses : ArrayList<Horse> = ArrayList()
+    val sounds : ArrayList<MediaPlayer> = ArrayList()
 
     override fun onExitDialogPositiveClick(dialog: DialogFragment) {
         finish()
     }
 
-    private fun loadRazasYPelajes(horses : List<Horse>) {
-        TODO()
+    private fun loadRazasYPelajes() {
+        val hCol = JSONHelper.fromJSON(Horse::class.java, resources.openRawResource(R.raw.horses))
+        horses.addAll(hCol)
+        for (h in hCol) {
+            val id = resources.getIdentifier("sound_" + h.raza, "raw", packageName)
+            sounds.add(MediaPlayer.create(this, id))
+        }
     }
 
-    private fun loadCruzas(horses : List<Horse>) {
-        TODO()
-    }
-
-    private fun initializeSounds() {
-        TODO()
+    private fun loadCruzas() {
+        loadRazasYPelajes()
+        // lo mismo pero con .cruza
     }
 
     private fun initializeHorses(sharedPref: SharedPreferences) {
         val defaultRecon : HashSet<String> = HashSet()
-        defaultRecon.add(getString(R.string.razas))
+        defaultRecon.add(getString(R.string.reconRyP))
 
         val gamemodes  = sharedPref.getStringSet(getString(R.string.gameMode), defaultRecon)
 
-        if (gamemodes.contains(getString(R.string.razas))) loadRazasYPelajes(horses)
-        if (gamemodes.contains(getString(R.string.cruzas))) loadCruzas(horses)
+        if (gamemodes.contains(getString(R.string.reconRyP))) loadRazasYPelajes()
+        if (gamemodes.contains(getString(R.string.reconCruza))) loadCruzas()
     }
 
     private fun setReconMode(sharedPref: SharedPreferences){
@@ -49,7 +52,6 @@ class Reconocimiento : AppCompatActivity(), DialogExit.ExitDialogListener {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         val sharedPref = getSharedPreferences(getString(R.string.config), Context.MODE_PRIVATE)
-        initializeSounds()
         initializeHorses(sharedPref)
         setReconMode(sharedPref)
         mode.runRecon()

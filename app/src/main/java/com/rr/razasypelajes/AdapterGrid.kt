@@ -13,8 +13,8 @@ import com.rr.razasypelajes.horses.Horse
 
 class AdapterGrid(var context: Reconocimiento): RecyclerView.Adapter<AdapterGrid.ViewHolder>() {
 
-    private var dataSource: List<Horse> = context.horses
-    private var sound = MediaPlayer.create(context, R.raw.horse_sound) as MediaPlayer
+    private var horses: List<Horse> = context.horses
+    private var sounds: List<MediaPlayer> = context.sounds
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         val view: View = LayoutInflater.from(parent.context).inflate(R.layout.recon_grid_include, parent, false)
@@ -22,15 +22,14 @@ class AdapterGrid(var context: Reconocimiento): RecyclerView.Adapter<AdapterGrid
     }
 
     override fun getItemCount(): Int {
-        return dataSource.size
+        return horses.size
     }
 
-    // TODO("Agregar imagen, sonido")
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
-        val horse = dataSource[position]
-        holder.image.setImageResource(R.drawable.horse1)
-        holder.audio.setOnClickListener { sound.start() }
-        holder.texto.text = horse.raza
+        val horse = horses[position]
+        holder.image.setImageResource(horse.getImageId(context))
+        holder.audio.setOnClickListener { sounds[position].start() }
+        holder.texto.text = horse.prettyRaza()
     }
 
 
