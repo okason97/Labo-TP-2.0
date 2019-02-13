@@ -31,7 +31,7 @@ class InteraccionA(private val context : Game): GameMode(context){
         }
         val chosenHorses : List<Horse>
         chosenHorses = questionMode.chooseHorses(horses, context.answerViews.size)
-        for (i in  0 until chosenHorses.size) {
+        for (i in 0 until chosenHorses.size) {
             questionMode.setText(context.answerViews[i].findViewById(R.id.textAnswer),
                     chosenHorses[i])
             questionMode.setSound(context.answerViews[i].findViewById(R.id.soundAnswer),

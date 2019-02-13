@@ -13,7 +13,7 @@ import android.view.View
 import kotlin.collections.ArrayList
 import kotlin.properties.Delegates
 import android.widget.ImageView
-
+import android.widget.LinearLayout
 
 
 class Game: AppCompatActivity(), DialogExit.ExitDialogListener, DialogVictory.VictoryDialogListener, DialogDefeat.DefeatDialogListener {
@@ -28,7 +28,7 @@ class Game: AppCompatActivity(), DialogExit.ExitDialogListener, DialogVictory.Vi
     }
 
     private val sounds : HashMap<String, MediaPlayer> = HashMap()
-    var answerViews : ArrayList<ConstraintLayout> = ArrayList()
+    var answerViews : ArrayList<View> = ArrayList()
     var answer : Int by Delegates.notNull()
     private lateinit var gameMode : GameMode
     private var count = 0
@@ -74,31 +74,31 @@ class Game: AppCompatActivity(), DialogExit.ExitDialogListener, DialogVictory.Vi
         when(sharedPref.getInt(getString(R.string.modo_interaccion), R.id.rypImagenPalabra)){
             R.id.rypImagenPalabra -> {
                 if (sharedPref.getBoolean(getString(R.string.level), false)){
-                    addLevelOneAnswers()
                     setContentView(R.layout.interaccion_imagen_palabra_level1)
+                    addLevelOneAnswers()
                 }else{
-                    addLevelTwoAnswers()
                     setContentView(R.layout.interaccion_imagen_palabra_level2)
+                    addLevelTwoAnswers()
                 }
                 gameMode = InteraccionA(this)
             }
             R.id.rypPalabraImagen -> {
                 if (sharedPref.getBoolean(getString(R.string.level), false)){
-                    addLevelOneAnswers()
                     setContentView(R.layout.interaccion_palabra_imagen_level1)
+                    addLevelOneAnswers()
                 }else{
-                    addLevelTwoAnswers()
                     setContentView(R.layout.interaccion_palabra_imagen_level2)
+                    addLevelTwoAnswers()
                 }
                 gameMode = InteraccionB(this)
             }
             R.id.cruzas -> {
                 if (sharedPref.getBoolean(getString(R.string.level), false)){
-                    addLevelOneAnswers()
                     setContentView(R.layout.interaccion_imagen_imagen_level1)
+                    addLevelOneAnswers()
                 }else{
-                    addLevelTwoAnswers()
                     setContentView(R.layout.interaccion_imagen_imagen_level2)
+                    addLevelTwoAnswers()
                 }
                 gameMode = InteraccionC(this)
             }
