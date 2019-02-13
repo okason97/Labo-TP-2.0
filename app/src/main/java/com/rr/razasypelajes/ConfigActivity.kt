@@ -79,6 +79,8 @@ class ConfigActivity : AppCompatActivity(), DialogExitConfig.ExitConfigDialogLis
         reconRyP.isChecked = preferences.getBoolean(getString(R.string.reconRyP), false)
         reconCruza.isChecked = preferences.getBoolean(getString(R.string.reconCruza), false)
 
+        if (!reconRyP.isChecked && !reconCruza.isChecked) reconRyP.isChecked = true
+
         // Minigame
         minigameRadio.check(preferences.getInt(getString(R.string.minijuego), R.id.rypImagenPalabra))
 
