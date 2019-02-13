@@ -11,14 +11,14 @@ import com.rr.razasypelajes.helpers.JSONHelper
 import com.rr.razasypelajes.horses.Horse
 
 class Reconocimiento : AppCompatActivity(), DialogExit.ExitDialogListener {
+    override fun onExitDialogPositiveClick(dialog: DialogFragment) {
+        finish()
+    }
+
     private lateinit var mode : ReconMode
 
     val horses : ArrayList<Horse> = ArrayList()
     val sounds : ArrayList<MediaPlayer> = ArrayList()
-
-    override fun onExitDialogPositiveClick(dialog: DialogFragment) {
-        finish()
-    }
 
     private fun loadRazasYPelajes() {
         val hCol = JSONHelper.fromJSON(Horse::class.java, resources.openRawResource(R.raw.horses))
@@ -59,10 +59,8 @@ class Reconocimiento : AppCompatActivity(), DialogExit.ExitDialogListener {
         mode.runRecon()
     }
 
-    fun goBack(view: View?){
-        // Create an instance of the dialog fragment and show it
-        val dialog = DialogExit() as DialogFragment
-        dialog.show(supportFragmentManager, "NoticeDialogFragment")
+    fun goBack(view: View) {
+        finish()
     }
 
 }
