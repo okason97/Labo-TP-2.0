@@ -237,7 +237,7 @@ class Game: AppCompatActivity(), DialogExit.ExitDialogListener, DialogVictory.Vi
                 as AnimationDrawable) {
             override fun onAnimationFinish() {
                 img.visibility = View.GONE
-                newLevel()
+                victoryDialog()
             }
         }
 
@@ -249,15 +249,6 @@ class Game: AppCompatActivity(), DialogExit.ExitDialogListener, DialogVictory.Vi
         }
 
         img.post { anim.start() }
-    }
-
-    private fun restartError() {
-        val sound : MediaPlayer ?= sounds[getString(R.string.error_sound_key)]
-        if (sound != null) {
-            sound.stop()
-            sound.release()
-        }
-        sounds[getString(R.string.error_sound_key)] = MediaPlayer.create(this, R.raw.sound_resoplido)
     }
 
     private fun duration(key : Int): Long {
