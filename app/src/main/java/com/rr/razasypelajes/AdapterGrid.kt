@@ -31,7 +31,7 @@ class AdapterGrid(val context: Reconocimiento): RecyclerView.Adapter<AdapterGrid
         val horse = horses[position]
         holder.image.setImageResource(horse.getImageId(context))
         holder.audio.setOnClickListener { sounds[position].start() }
-        holder.texto.text = horse.prettyRaza()
+        holder.texto.text = horse.prettyBoth()
     }
 
 
