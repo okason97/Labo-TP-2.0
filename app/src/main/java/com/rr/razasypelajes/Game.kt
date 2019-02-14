@@ -197,7 +197,7 @@ class Game: AppCompatActivity(), DialogExit.ExitDialogListener, DialogVictory.Vi
         val img = findViewById<ImageView>(R.id.confeti_anim)
         img.visibility = View.VISIBLE
 
-        val animation = object : MyAnimationDrawable(getString(R.string.confetiDrawableName),this, img.width, img.height) {
+        val animation = object : MyAnimationDrawable(getString(R.string.confetiDrawableName),this, img.width, img.height, 8) {
 
             override fun onAnimationFinish() {
                 img.visibility = View.GONE
@@ -239,7 +239,7 @@ class Game: AppCompatActivity(), DialogExit.ExitDialogListener, DialogVictory.Vi
         val img = findViewById<ImageView>(R.id.cup_anim)
         img.visibility = View.VISIBLE
 
-        val animation = object : MyAnimationDrawable(getString(R.string.cupDrawableName),this, img.width, img.height) {
+        val animation = object : MyAnimationDrawable(getString(R.string.cupDrawableName),this, img.width, img.height, 1) {
 
             override fun onAnimationFinish() {
                 img.visibility = View.GONE

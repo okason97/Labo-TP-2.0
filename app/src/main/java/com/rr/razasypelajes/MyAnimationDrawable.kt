@@ -12,8 +12,7 @@ import android.os.Handler
 import java.io.IOException
 
 
-abstract class MyAnimationDrawable(private val name : String, private val context: Context, private val reqWidth: Int, private val reqHeight: Int) : AnimationDrawable() {
-    private var current: Int = 0
+abstract class MyAnimationDrawable(private val name : String, private val context: Context, private val reqWidth: Int, private val reqHeight: Int, private var current : Int) : AnimationDrawable() {
     private var totalTime: Int = 0
 
     override fun addFrame(frame: Drawable, duration: Int) {
