@@ -34,7 +34,7 @@ abstract class MyAnimationDrawable(private val name : String, private val contex
                 "$current"
             }
             //Loading image from assets, you could make it from resources
-            val id = context.resources.getIdentifier("$name$number.jpg", "drawable", context.packageName)
+            val id = context.resources.getIdentifier("$name$number", "drawable", context.packageName)
             var bmp = BitmapFactory.decodeResource(context.resources, id);
             //Scaling image to fitCenter
             val m = Matrix()

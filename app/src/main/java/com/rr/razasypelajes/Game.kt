@@ -22,7 +22,7 @@ import java.io.IOException
 class Game: AppCompatActivity(), DialogExit.ExitDialogListener, DialogVictory.VictoryDialogListener, DialogDefeat.DefeatDialogListener {
     override fun onDefeatDialogPositiveClick(dialog: DialogFragment) {
         count = 0
-        victories = 0
+        victories = 1
         gameMode.newGame()
     }
 
@@ -35,7 +35,7 @@ class Game: AppCompatActivity(), DialogExit.ExitDialogListener, DialogVictory.Vi
     var answer : Int by Delegates.notNull()
     private lateinit var gameMode : GameMode
     private var count = 0
-    private var victories = 0
+    private var victories = 1
     private lateinit var sharedPref : SharedPreferences
 
     override fun onVictoryDialogNegativeClick(dialog: DialogFragment) {
@@ -126,6 +126,9 @@ class Game: AppCompatActivity(), DialogExit.ExitDialogListener, DialogVictory.Vi
     }
 
     fun selectedAnswer(view: View) {
+        println(answer)
+        println(view.id)
+        println(victories)
         if (view.id == answer) {
             victories++
             playCorrect()
