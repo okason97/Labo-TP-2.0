@@ -38,7 +38,7 @@ class Horse(json: JSONObject) : JSONBuildable(json) {
     }
 
     fun prettyBoth() : String? {
-        return prettyRaza() + " " + prettyPelaje()
+        return prettyRaza() + " - " + prettyPelaje()
     }
 
     fun getImageId(context: Context): Int {

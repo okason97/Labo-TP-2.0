@@ -25,10 +25,10 @@
 
     <TextView
         android:id="@+id/gridItemText"
-        android:layout_width="wrap_content"
+        android:layout_width="100dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
-        android:maxWidth="125dp"
+        android:gravity="center"
         android:text="@string/placeholder"
         app:layout_constraintBottom_toTopOf="@+id/gridItemAudio"
         app:layout_constraintEnd_toEndOf="@+id/gridItemImage"

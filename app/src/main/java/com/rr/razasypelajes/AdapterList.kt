@@ -31,7 +31,7 @@ class AdapterList(val context: Reconocimiento): RecyclerView.Adapter<AdapterList
         val horse = horses[position]
         holder.image.setImageResource(horse.getImageId(context))
         holder.audio.setOnClickListener { sounds[position].start() }
-        holder.texto.text = horse.prettyRaza()
+        holder.texto.text = horse.prettyBoth()
         holder.bigText.text = context.resources.getText(R.string.loreipsum) // TODO
     }
 
