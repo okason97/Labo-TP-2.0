@@ -55,8 +55,8 @@ class Game: AppCompatActivity(), DialogExit.ExitDialogListener, DialogVictory.Vi
 
     private fun initializeSounds() {
         sounds[getString(R.string.horse_sound_key)] = MediaPlayer.create(this, R.raw.horse_sound)
-        sounds[getString(R.string.error_sound_key)] = MediaPlayer.create(this, R.raw.error_sound)
-        sounds[getString(R.string.correct_sound_key)] = MediaPlayer.create(this, R.raw.success_sound)
+        sounds[getString(R.string.error_sound_key)] = MediaPlayer.create(this, R.raw.sound_resoplido)
+        sounds[getString(R.string.correct_sound_key)] = MediaPlayer.create(this, R.raw.sound_relincho)
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
