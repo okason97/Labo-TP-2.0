@@ -4,7 +4,7 @@ import com.rr.razasypelajes.horses.Horse
 
 class QuestionPelaje : QuestionMode() {
     override fun getPrettyData(horse: Horse): String {
-        return (horse.pelaje as String).capitalize()
+        return horse.prettyPelaje() as String
     }
 
     override fun getData(horse: Horse): String {

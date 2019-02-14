@@ -34,11 +34,11 @@ class DialogDefeat : DialogFragment() {
         // Build the dialog and set up the button click handlers
         val builder : AlertDialog.Builder = AlertDialog.Builder(activity)
         builder.setMessage(R.string.defeat_message)
-                .setPositiveButton(R.string.defeat_finish) { _, _ ->
+                .setPositiveButton(R.string.defeat_restart) { _, _ ->
                     // Send the positive button event back to the host activity
                     mListener.onDefeatDialogPositiveClick(this@DialogDefeat)
                 }
-                .setNegativeButton(R.string.defeat_restart) { _, _ ->
+                .setNegativeButton(R.string.defeat_finish) { _, _ ->
                     // Send the negative button event back to the host activity
                     mListener.onDefeatDialogNegativeClick(this@DialogDefeat)
                 }

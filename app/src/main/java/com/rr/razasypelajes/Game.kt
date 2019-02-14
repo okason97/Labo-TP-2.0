@@ -12,9 +12,6 @@ import android.view.View
 import kotlin.collections.ArrayList
 import kotlin.properties.Delegates
 import android.widget.ImageView
-import android.graphics.drawable.BitmapDrawable
-import android.graphics.BitmapFactory
-import java.io.IOException
 import android.graphics.drawable.AnimationDrawable
 import android.support.v4.content.res.ResourcesCompat
 
@@ -44,8 +41,7 @@ class Game: AppCompatActivity(), DialogExit.ExitDialogListener, DialogVictory.Vi
                 R.id.razasYPelajes)
         editor.putBoolean(getString(R.string.level), false)
         editor.apply()
-        setGameMode()
-        gameMode.newGame()
+        newLevel()
     }
 
     override fun onVictoryDialogPositiveClick(dialog: DialogFragment) {

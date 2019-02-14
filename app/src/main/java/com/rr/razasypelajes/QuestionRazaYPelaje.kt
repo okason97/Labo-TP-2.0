@@ -4,7 +4,7 @@ import com.rr.razasypelajes.horses.Horse
 
 class QuestionRazaYPelaje : QuestionMode() {
     override fun getPrettyData(horse: Horse): String {
-        return "${horse.raza} - ${horse.pelaje}"
+        return horse.prettyBoth() as String
     }
 
     override fun getData(horse: Horse): String {
