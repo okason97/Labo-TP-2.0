@@ -132,58 +132,58 @@ class Game: AppCompatActivity(), DialogExit.ExitDialogListener, DialogVictory.Vi
         if (view.id == answer) {
             victories++
             playCorrect()
-            if (count < 5) {
-                Handler().postDelayed({
-                    gameMode.newGame()
-                }, correctDuration())
-            }else{
-                val currentLevel = sharedPref.getInt(getString(R.string.lastLevel),1)
-                if (victories >= 3){
-                    val editor : SharedPreferences.Editor
-                    if (sharedPref.getBoolean(getString(R.string.level), false)){
-                        when (sharedPref.getInt(getString(R.string.minijuego),
-                                R.id.razasYPelajes)){
-                            R.id.razasYPelajes -> {
-                                playNextLevel()
-                                editor = sharedPref.edit()
-                                editor.putInt(getString(R.string.minijuego),
-                                        R.id.razasYPelajesJuntos)
-                                editor.putBoolean(getString(R.string.level), false)
-                                if (currentLevel < resources.getInteger(R.integer.firstRyPJLevel)){
-                                    editor.putInt(getString(R.string.lastLevel), currentLevel+1)
-                                }
-                                editor.apply()
-                            }
-                            R.id.razasYPelajesJuntos -> {
-                                playNextLevel()
-                                editor = sharedPref.edit()
-                                editor.putInt(getString(R.string.minijuego),
-                                        R.id.cruzas)
-                                editor.putBoolean(getString(R.string.level), false)
-                                if (currentLevel < resources.getInteger(R.integer.firstCruzasLevel)){
-                                    editor.putInt(getString(R.string.lastLevel), currentLevel+1)
-                                }
-                                editor.apply()
-                            }
-                            R.id.cruzas -> {
-                                playVictory()
-                            }
-                        }
-                    }else{
-                        editor = sharedPref.edit()
-                        editor.putBoolean(getString(R.string.level), true)
-                        editor.putInt(getString(R.string.lastLevel), currentLevel+1)
-                        editor.apply()
-                    }
-                }
-            }
-        } else {
-            restartError()
+        }else{
             playError()
-            if (count < 5) {
+        }
+        if (count < 5) {
+            if (view.id == answer) {
                 Handler().postDelayed({
                     gameMode.newGame()
-                }, correctDuration())
+                }, duration(R.string.correct_sound_key))
+            }else{
+                Handler().postDelayed({
+                    gameMode.newGame()
+                }, duration(R.string.error_sound_key))
+            }
+        }else{
+            if (victories >= 3) {
+                val currentLevel = sharedPref.getInt(getString(R.string.lastLevel), 1)
+                val editor: SharedPreferences.Editor
+                if (sharedPref.getBoolean(getString(R.string.level), false)) {
+                    when (sharedPref.getInt(getString(R.string.minijuego),
+                            R.id.razasYPelajes)) {
+                        R.id.razasYPelajes -> {
+                            playNextLevel()
+                            editor = sharedPref.edit()
+                            editor.putInt(getString(R.string.minijuego),
+                                    R.id.razasYPelajesJuntos)
+                            editor.putBoolean(getString(R.string.level), false)
+                            if (currentLevel < resources.getInteger(R.integer.firstRyPJLevel)) {
+                                editor.putInt(getString(R.string.lastLevel), currentLevel + 1)
+                            }
+                            editor.apply()
+                        }
+                        R.id.razasYPelajesJuntos -> {
+                            playNextLevel()
+                            editor = sharedPref.edit()
+                            editor.putInt(getString(R.string.minijuego),
+                                    R.id.cruzas)
+                            editor.putBoolean(getString(R.string.level), false)
+                            if (currentLevel < resources.getInteger(R.integer.firstCruzasLevel)) {
+                                editor.putInt(getString(R.string.lastLevel), currentLevel + 1)
+                            }
+                            editor.apply()
+                        }
+                        R.id.cruzas -> {
+                            playVictory()
+                        }
+                    }
+                } else {
+                    editor = sharedPref.edit()
+                    editor.putBoolean(getString(R.string.level), true)
+                    editor.putInt(getString(R.string.lastLevel), currentLevel + 1)
+                    editor.apply()
+                }
             }else{
                 // Create an instance of the dialog fragment and show it
                 val dialog : DialogFragment = DialogDefeat()
@@ -280,8 +280,8 @@ class Game: AppCompatActivity(), DialogExit.ExitDialogListener, DialogVictory.Vi
         sounds[getString(R.string.error_sound_key)] = MediaPlayer.create(this, R.raw.sound_resoplido)
     }
 
-    private fun correctDuration(): Long {
-        val sound : MediaPlayer? = sounds[getString(R.string.correct_sound_key)]
+    private fun duration(key : Int): Long {
+        val sound : MediaPlayer? = sounds[getString(key)]
         return if (sound != null) {
             System.out.println("sound exists")
             sound.duration.toLong()
