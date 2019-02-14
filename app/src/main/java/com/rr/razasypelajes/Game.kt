@@ -72,6 +72,7 @@ class Game: AppCompatActivity(), DialogExit.ExitDialogListener, DialogVictory.Vi
     }
 
     private fun newLevel() {
+        answerViews = ArrayList()
         count = 0
         victories = 0
         setGameMode()
