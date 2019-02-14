@@ -1,14 +1,14 @@
 [
   {
     "image":"padres1",
-    "cruza":"raza1"
+    "cruza":"cuarto_de_milla"
   },
   {
     "image":"padres2",
-    "cruza":"raza2"
+    "cruza":"criollo"
   },
   {
     "image":"padres3",
-    "cruza":"raza3"
+    "cruza":"mestizo"
   }
 ]
