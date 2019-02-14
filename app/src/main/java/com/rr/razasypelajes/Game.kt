@@ -2,7 +2,6 @@ package com.rr.razasypelajes
 
 import android.content.Context
 import android.content.SharedPreferences
-import android.graphics.drawable.AnimationDrawable
 import android.media.MediaPlayer
 import android.os.Build
 import android.os.Bundle
@@ -15,14 +14,15 @@ import kotlin.properties.Delegates
 import android.widget.ImageView
 import android.graphics.drawable.BitmapDrawable
 import android.graphics.BitmapFactory
-import android.graphics.Bitmap
 import java.io.IOException
+import android.graphics.drawable.AnimationDrawable
+import android.support.v4.content.res.ResourcesCompat
 
 
 class Game: AppCompatActivity(), DialogExit.ExitDialogListener, DialogVictory.VictoryDialogListener, DialogDefeat.DefeatDialogListener {
     override fun onDefeatDialogPositiveClick(dialog: DialogFragment) {
         count = 0
-        victories = 1
+        victories = 0
         gameMode.newGame()
     }
 
@@ -35,7 +35,7 @@ class Game: AppCompatActivity(), DialogExit.ExitDialogListener, DialogVictory.Vi
     var answer : Int by Delegates.notNull()
     private lateinit var gameMode : GameMode
     private var count = 0
-    private var victories = 1
+    private var victories = 0
     private lateinit var sharedPref : SharedPreferences
 
     override fun onVictoryDialogNegativeClick(dialog: DialogFragment) {
@@ -68,9 +68,14 @@ class Game: AppCompatActivity(), DialogExit.ExitDialogListener, DialogVictory.Vi
         sharedPref = getSharedPreferences(getString(R.string.config), Context.MODE_PRIVATE)
 
         initializeSounds()
+        newLevel()
+    }
+
+    private fun newLevel() {
+        count = 0
+        victories = 0
         setGameMode()
         gameMode.newGame()
-        count++
     }
 
     private fun setGameMode(){
@@ -135,6 +140,7 @@ class Game: AppCompatActivity(), DialogExit.ExitDialogListener, DialogVictory.Vi
         }else{
             playError()
         }
+        count++
         if (count < 5) {
             if (view.id == answer) {
                 Handler().postDelayed({
@@ -153,7 +159,6 @@ class Game: AppCompatActivity(), DialogExit.ExitDialogListener, DialogVictory.Vi
                     when (sharedPref.getInt(getString(R.string.minijuego),
                             R.id.razasYPelajes)) {
                         R.id.razasYPelajes -> {
-                            playNextLevel()
                             editor = sharedPref.edit()
                             editor.putInt(getString(R.string.minijuego),
                                     R.id.razasYPelajesJuntos)
@@ -162,9 +167,9 @@ class Game: AppCompatActivity(), DialogExit.ExitDialogListener, DialogVictory.Vi
                                 editor.putInt(getString(R.string.lastLevel), currentLevel + 1)
                             }
                             editor.apply()
+                            playNextLevel()
                         }
                         R.id.razasYPelajesJuntos -> {
-                            playNextLevel()
                             editor = sharedPref.edit()
                             editor.putInt(getString(R.string.minijuego),
                                     R.id.cruzas)
@@ -173,6 +178,7 @@ class Game: AppCompatActivity(), DialogExit.ExitDialogListener, DialogVictory.Vi
                                 editor.putInt(getString(R.string.lastLevel), currentLevel + 1)
                             }
                             editor.apply()
+                            playNextLevel()
                         }
                         R.id.cruzas -> {
                             playVictory()
@@ -183,6 +189,7 @@ class Game: AppCompatActivity(), DialogExit.ExitDialogListener, DialogVictory.Vi
                     editor.putBoolean(getString(R.string.level), true)
                     editor.putInt(getString(R.string.lastLevel), currentLevel + 1)
                     editor.apply()
+                    newLevel()
                 }
             }else{
                 // Create an instance of the dialog fragment and show it
@@ -190,43 +197,29 @@ class Game: AppCompatActivity(), DialogExit.ExitDialogListener, DialogVictory.Vi
                 dialog.show(supportFragmentManager, "Fin del juego")
             }
         }
-        count++
     }
 
     private fun playNextLevel() {
         val img = findViewById<ImageView>(R.id.confeti_anim)
         img.visibility = View.VISIBLE
 
-        val animation = object : MyAnimationDrawable(getString(R.string.confetiDrawableName),this, img.width, img.height, 8) {
-
+        // Pass our animation drawable to our custom drawable class
+        val anim = object : MyAnimationDrawable(ResourcesCompat.getDrawable(resources, R.drawable.anim_confeti, null)
+                as AnimationDrawable) {
             override fun onAnimationFinish() {
                 img.visibility = View.GONE
-                setGameMode()
-                gameMode.newGame()
+                newLevel()
             }
-
-        }
-        animation.isOneShot = true
-
-        try {
-            //Always load same bitmap, anyway you load the right one in draw() method in MyAnimationDrawable
-            val id = resources.getIdentifier("${getString(R.string.confetiDrawableName)}00.jpg", "drawable", packageName)
-            val bmp = BitmapFactory.decodeResource(resources, id);
-            for (i in 0..resources.getInteger(R.integer.confettiFramesSize)) {
-                animation.addFrame(BitmapDrawable(resources, bmp), resources.getInteger(R.integer.confettiFrameDuration))
-            }
-        } catch (e: IOException) {
-            e.printStackTrace()
         }
 
         //Set AnimationDrawable to ImageView
         if (Build.VERSION.SDK_INT < 16) {
-            img.setBackgroundDrawable(animation);
+            img.setBackgroundDrawable(anim)
         } else {
-            img.background = animation;
+            img.background = anim
         }
 
-        img.post { animation.start() }
+        img.post { anim.start() }
     }
 
     private fun victoryDialog() {
@@ -239,36 +232,23 @@ class Game: AppCompatActivity(), DialogExit.ExitDialogListener, DialogVictory.Vi
         val img = findViewById<ImageView>(R.id.cup_anim)
         img.visibility = View.VISIBLE
 
-        val animation = object : MyAnimationDrawable(getString(R.string.cupDrawableName),this, img.width, img.height, 1) {
-
+        // Pass our animation drawable to our custom drawable class
+        val anim = object : MyAnimationDrawable(ResourcesCompat.getDrawable(resources, R.drawable.anim_cup, null)
+                as AnimationDrawable) {
             override fun onAnimationFinish() {
                 img.visibility = View.GONE
-                victoryDialog()
+                newLevel()
             }
-
-        }
-        animation.isOneShot = true
-
-        try {
-            //Always load same bitmap, anyway you load the right one in draw() method in MyAnimationDrawable
-            val id = resources.getIdentifier("${getString(R.string.cupDrawableName)}00.jpg", "drawable", packageName)
-            val bmp = BitmapFactory.decodeResource(resources, id);
-            for (i in 0..resources.getInteger(R.integer.cupFramesSize)) {
-                animation.addFrame(BitmapDrawable(resources, bmp), resources.getInteger(R.integer.cupFrameDuration))
-            }
-        } catch (e: IOException) {
-            e.printStackTrace()
         }
 
         //Set AnimationDrawable to ImageView
         if (Build.VERSION.SDK_INT < 16) {
-            img.setBackgroundDrawable(animation);
+            img.setBackgroundDrawable(anim)
         } else {
-            img.background = animation;
+            img.background = anim
         }
 
-        img.post { animation.start() }
-
+        img.post { anim.start() }
     }
 
     private fun restartError() {

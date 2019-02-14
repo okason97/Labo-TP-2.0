@@ -19,7 +19,7 @@ abstract class QuestionMode {
             chosenHorses += horses[count]
             count++
         }
-        return chosenHorses
+        return chosenHorses.shuffled()
     }
 
     fun setText(view : TextView, horse: Horse){

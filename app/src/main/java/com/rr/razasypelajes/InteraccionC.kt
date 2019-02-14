@@ -45,23 +45,20 @@ class InteraccionC(private val context : Game): GameMode(context) {
         var chosenHorses : List<Horse> = ArrayList()
         var count = 0
         for (i in 0 until size-1){
-            if (found){
-                while (horses[count].raza == cruza) count++
-                chosenHorses = chosenHorses + horses[count]
-                count++
-            }else{
-                chosenHorses = chosenHorses + horses[count]
+            if (!found){
                 if (horses[count].raza == cruza) found = true
-                count++
+                chosenHorses += horses[count]
+            }else{
+                while (horses[count].raza == cruza) count++
+                chosenHorses += horses[count]
             }
+            count++
         }
-        chosenHorses = chosenHorses + if (found){
-            while (horses[count].raza == cruza)
-                count++
+        chosenHorses += if (found) {
+            while (horses[count].raza == cruza) count++
             horses[count]
-        }else{
-            while (horses[count].raza != cruza)
-                count++
+        } else {
+            while (horses[count].raza != cruza) count++
             horses[count]
         }
         return chosenHorses.shuffled()
