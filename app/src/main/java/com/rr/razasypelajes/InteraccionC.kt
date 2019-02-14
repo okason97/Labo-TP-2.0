@@ -21,7 +21,7 @@ class InteraccionC(private val context : Game): GameMode(context) {
         chosenHorses = chooseHorses(horses, context.answerViews.size,
                 cruzas[answerIndex].cruza as String)
         var id: Int
-        for (i in  0..chosenHorses.size) {
+        for (i in  0 until chosenHorses.size) {
             id = context.resources.getIdentifier(chosenHorses[i].img, "drawable",
                     context.packageName)
             context.answerViews[i].findViewById<ImageView>(R.id.imageAnswer)
@@ -46,18 +46,16 @@ class InteraccionC(private val context : Game): GameMode(context) {
         var count = 0
         for (i in 0 until size-1){
             if (found){
-                while (horses[count].raza == cruza)
-                    count++
-                chosenHorses += horses[count]
+                while (horses[count].raza == cruza) count++
+                chosenHorses = chosenHorses + horses[count]
                 count++
             }else{
-                chosenHorses += horses[count]
+                chosenHorses = chosenHorses + horses[count]
+                if (horses[count].raza == cruza) found = true
                 count++
-                if (horses[count].raza == cruza)
-                    found = true
             }
         }
-        chosenHorses += if (found){
+        chosenHorses = chosenHorses + if (found){
             while (horses[count].raza == cruza)
                 count++
             horses[count]

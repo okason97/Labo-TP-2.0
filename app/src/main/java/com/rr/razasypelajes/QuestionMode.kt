@@ -17,6 +17,7 @@ abstract class QuestionMode {
             }
             chosenRazasOPelajes += getData(horses[count])
             chosenHorses += horses[count]
+            count++
         }
         return chosenHorses
     }
