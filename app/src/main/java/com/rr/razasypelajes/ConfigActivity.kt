@@ -28,7 +28,7 @@ class ConfigActivity : AppCompatActivity(), DialogExitConfig.ExitConfigDialogLis
     private lateinit var reconCruza: CheckBox
 
     // Minigame
-    private lateinit var minigameRadio : RadioGroup
+    private lateinit var interactionRadio : RadioGroup
 
     // Dificulty
     private lateinit var dificultySwitch: Switch
@@ -51,7 +51,7 @@ class ConfigActivity : AppCompatActivity(), DialogExitConfig.ExitConfigDialogLis
         reconCruza = findViewById(R.id.settingsReconCruza)
 
         // Minigame
-        minigameRadio = findViewById(R.id.settingsMinigameGroup)
+        interactionRadio = findViewById(R.id.settingsInteractionGroup)
 
         // Dificulty
         dificultySwitch = findViewById(R.id.settingsDificultySwitch)
@@ -81,8 +81,12 @@ class ConfigActivity : AppCompatActivity(), DialogExitConfig.ExitConfigDialogLis
 
         if (!reconRyP.isChecked && !reconCruza.isChecked) reconRyP.isChecked = true
 
-        // Minigame
-        minigameRadio.check(preferences.getInt(getString(R.string.minijuego), R.id.rypImagenPalabra))
+        // Interaction
+        if (preferences.getInt(getString(R.string.minijuego), R.id.razasYPelajes) != R.id.cruzas){
+            interactionRadio.check(preferences.getInt(getString(R.string.interaccion), R.id.imagenPalabra))
+        }else{
+            interactionRadio.check(R.id.imagenImagen)
+        }
 
         // Dificulty
         dificultySwitch.isChecked = preferences.getBoolean(getString(R.string.level), false)
@@ -91,37 +95,14 @@ class ConfigActivity : AppCompatActivity(), DialogExitConfig.ExitConfigDialogLis
         audioSwitch.isChecked = preferences.getBoolean(getString(R.string.audioSwitch), false)
 
         val currentMaxLevel = preferences.getInt(getString(R.string.lastLevel), 1)
-        when(preferences.getInt(getString(R.string.minijuego), R.id.rypImagenPalabra)){
-            R.id.rypImagenPalabra -> {
-                if(currentMaxLevel > resources.getInteger(R.integer.firstRyPImagenPalabraLevel)){
-                    dificultySwitch.isEnabled = true
-                    dificultySwitch.isClickable = true
-                    dificultyText.isEnabled = true
-                }
-            }
-            R.id.rypPalabraImagen -> {
-                if(currentMaxLevel > resources.getInteger(
-                                R.integer.firstRyPPalabraImagenLevel)){
-                    dificultySwitch.isEnabled = true
-                    dificultySwitch.isClickable = true
-                    dificultyText.isEnabled = true
-                }
-            }
-            R.id.cruzas -> {
-                if(currentMaxLevel > resources.getInteger(R.integer.firstCruzasLevel)){
-                    dificultySwitch.isEnabled = true
-                    dificultySwitch.isClickable = true
-                    dificultyText.isEnabled = true
-                }
-            }
-        }
-        if(currentMaxLevel > resources.getInteger(R.integer.firstCruzasLevel)){
-            minigameRadio.findViewById<RadioButton>(R.id.cruzas).isEnabled = true
-            minigameRadio.findViewById<RadioButton>(R.id.cruzas).isClickable = true
-        }else if(currentMaxLevel > resources.getInteger(
-                    R.integer.firstRyPPalabraImagenLevel)){
-            minigameRadio.findViewById<RadioButton>(R.id.rypPalabraImagen).isEnabled = true
-            minigameRadio.findViewById<RadioButton>(R.id.rypPalabraImagen).isClickable = true
+        if(currentMaxLevel.rem(2) == 0){
+            dificultySwitch.isEnabled = true
+            dificultySwitch.isClickable = true
+            dificultyText.isEnabled = true
+        }else{
+            dificultySwitch.isEnabled = false
+            dificultySwitch.isClickable = false
+            dificultyText.isEnabled = false
         }
     }
 
@@ -129,7 +110,11 @@ class ConfigActivity : AppCompatActivity(), DialogExitConfig.ExitConfigDialogLis
         val editor : SharedPreferences.Editor = preferences.edit()
         editor.putBoolean(getString(R.string.audioSwitch), audioSwitch.isChecked)
         editor.putBoolean(getString(R.string.level), dificultySwitch.isChecked)
-        editor.putInt(getString(R.string.minijuego), minigameRadio.checkedRadioButtonId)
+
+        if (preferences.getInt(getString(R.string.minijuego), R.id.razasYPelajes) != R.id.cruzas){
+            editor.putInt(getString(R.string.interaccion), interactionRadio.checkedRadioButtonId)
+        }
+
         editor.putInt(getString(R.string.reconRadio), reconRadio.checkedRadioButtonId)
 
         if (!reconRyP.isChecked && !reconCruza.isChecked) reconRyP.isChecked = true
@@ -139,42 +124,4 @@ class ConfigActivity : AppCompatActivity(), DialogExitConfig.ExitConfigDialogLis
         editor.apply()
     }
 
-    fun onChangeMinigame(view : View){
-        val currentMaxLevel = preferences.getInt(getString(R.string.lastLevel), 1)
-        when(view.id){
-            R.id.rypImagenPalabra -> {
-                if(currentMaxLevel > resources.getInteger(R.integer.firstRyPImagenPalabraLevel)){
-                    dificultySwitch.isEnabled = true
-                    dificultySwitch.isClickable = true
-                    dificultyText.isEnabled = true
-                }else{
-                    dificultySwitch.isEnabled = false
-                    dificultySwitch.isClickable = false
-                    dificultyText.isEnabled = false
-                }
-            }
-            R.id.rypPalabraImagen -> {
-                if(currentMaxLevel > resources.getInteger(R.integer.firstRyPPalabraImagenLevel)){
-                    dificultySwitch.isEnabled = true
-                    dificultySwitch.isClickable = true
-                    dificultyText.isEnabled = true
-                }else{
-                    dificultySwitch.isEnabled = false
-                    dificultySwitch.isClickable = false
-                    dificultyText.isEnabled = false
-                }
-            }
-            R.id.cruzas -> {
-                if(currentMaxLevel > resources.getInteger(R.integer.firstCruzasLevel)){
-                    dificultySwitch.isEnabled = true
-                    dificultySwitch.isClickable = true
-                    dificultyText.isEnabled = true
-                }else{
-                    dificultySwitch.isEnabled = false
-                    dificultySwitch.isClickable = false
-                    dificultyText.isEnabled = false
-                }
-            }
-        }
-    }
 }

@@ -9,7 +9,7 @@
     <string name="volver">Volver</string>
     <string name="play_sound_button">Play Sound Button</string>
     <string name="modo_reconocimiento">Modo Reconocimiento</string>
-    <string name="minijuego">Minijuego</string>
+    <string name="interaccion">Interaccion</string>
     <string name="modo_interaccion">Modo Interaccion</string>
     <string name="ajustes">Ajustes</string>
     <string name="lista">Lista</string>
@@ -61,4 +61,7 @@
     <string name="accept_config">Aceptar y Salir</string>
     <string name="cancel_config">Salir sin guardar</string>
     <string name="horse_image">Horse image</string>
+    <string name="minijuego">minijuego</string>
+    <string name="confetiDrawableName">confeti_00</string>
+    <string name="cupDrawableName">copa_rotando00</string>
 </resources>

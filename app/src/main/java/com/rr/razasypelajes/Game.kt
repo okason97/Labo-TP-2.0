@@ -4,16 +4,19 @@ import android.content.Context
 import android.content.SharedPreferences
 import android.graphics.drawable.AnimationDrawable
 import android.media.MediaPlayer
+import android.os.Build
 import android.os.Bundle
 import android.os.Handler
-import android.support.constraint.ConstraintLayout
 import android.support.v4.app.DialogFragment
 import android.support.v7.app.AppCompatActivity
 import android.view.View
 import kotlin.collections.ArrayList
 import kotlin.properties.Delegates
 import android.widget.ImageView
-import android.widget.LinearLayout
+import android.graphics.drawable.BitmapDrawable
+import android.graphics.BitmapFactory
+import android.graphics.Bitmap
+import java.io.IOException
 
 
 class Game: AppCompatActivity(), DialogExit.ExitDialogListener, DialogVictory.VictoryDialogListener, DialogDefeat.DefeatDialogListener {
@@ -38,7 +41,7 @@ class Game: AppCompatActivity(), DialogExit.ExitDialogListener, DialogVictory.Vi
     override fun onVictoryDialogNegativeClick(dialog: DialogFragment) {
         val editor : SharedPreferences.Editor = sharedPref.edit()
         editor.putInt(getString(R.string.minijuego),
-                R.id.rypImagenPalabra)
+                R.id.razasYPelajes)
         editor.putBoolean(getString(R.string.level), false)
         editor.apply()
         setGameMode()
@@ -71,37 +74,38 @@ class Game: AppCompatActivity(), DialogExit.ExitDialogListener, DialogVictory.Vi
     }
 
     private fun setGameMode(){
-        when(sharedPref.getInt(getString(R.string.modo_interaccion), R.id.rypImagenPalabra)){
-            R.id.rypImagenPalabra -> {
-                if (sharedPref.getBoolean(getString(R.string.level), false)){
-                    setContentView(R.layout.interaccion_imagen_palabra_level1)
-                    addLevelOneAnswers()
-                }else{
-                    setContentView(R.layout.interaccion_imagen_palabra_level2)
-                    addLevelTwoAnswers()
+        if (sharedPref.getInt(getString(R.string.minijuego), R.id.razasYPelajes) != R.id.cruzas){
+            when(sharedPref.getInt(getString(R.string.interaccion), R.id.imagenPalabra)){
+                R.id.imagenPalabra -> {
+                    if (!sharedPref.getBoolean(getString(R.string.level), false)){
+                        setContentView(R.layout.interaccion_imagen_palabra_level1)
+                        addLevelOneAnswers()
+                    }else{
+                        setContentView(R.layout.interaccion_imagen_palabra_level2)
+                        addLevelTwoAnswers()
+                    }
+                    gameMode = InteraccionA(this)
                 }
-                gameMode = InteraccionA(this)
-            }
-            R.id.rypPalabraImagen -> {
-                if (sharedPref.getBoolean(getString(R.string.level), false)){
-                    setContentView(R.layout.interaccion_palabra_imagen_level1)
-                    addLevelOneAnswers()
-                }else{
-                    setContentView(R.layout.interaccion_palabra_imagen_level2)
-                    addLevelTwoAnswers()
+                R.id.palabraImagen -> {
+                    if (!sharedPref.getBoolean(getString(R.string.level), false)){
+                        setContentView(R.layout.interaccion_palabra_imagen_level1)
+                        addLevelOneAnswers()
+                    }else{
+                        setContentView(R.layout.interaccion_palabra_imagen_level2)
+                        addLevelTwoAnswers()
+                    }
+                    gameMode = InteraccionB(this)
                 }
-                gameMode = InteraccionB(this)
             }
-            R.id.cruzas -> {
-                if (sharedPref.getBoolean(getString(R.string.level), false)){
-                    setContentView(R.layout.interaccion_imagen_imagen_level1)
-                    addLevelOneAnswers()
-                }else{
-                    setContentView(R.layout.interaccion_imagen_imagen_level2)
-                    addLevelTwoAnswers()
-                }
-                gameMode = InteraccionC(this)
+        }else{
+            if (!sharedPref.getBoolean(getString(R.string.level), false)){
+                setContentView(R.layout.interaccion_imagen_imagen_level1)
+                addLevelOneAnswers()
+            }else{
+                setContentView(R.layout.interaccion_imagen_imagen_level2)
+                addLevelTwoAnswers()
             }
+            gameMode = InteraccionC(this)
         }
     }
 
@@ -135,32 +139,20 @@ class Game: AppCompatActivity(), DialogExit.ExitDialogListener, DialogVictory.Vi
                     val editor : SharedPreferences.Editor
                     if (sharedPref.getBoolean(getString(R.string.level), false)){
                         when (sharedPref.getInt(getString(R.string.minijuego),
-                                R.id.rypImagenPalabra)){
-                            R.id.rypImagenPalabra -> {
+                                R.id.razasYPelajes)){
+                            R.id.razasYPelajes -> {
                                 playNextLevel()
-                                Handler().postDelayed({
-                                    findViewById<ImageView>(R.id.confeti_anim)
-                                            .visibility = View.GONE
-                                    setGameMode()
-                                    gameMode.newGame()
-                                }, nextLevelDuration())
                                 editor = sharedPref.edit()
                                 editor.putInt(getString(R.string.minijuego),
-                                        R.id.rypPalabraImagen)
+                                        R.id.razasYPelajesJuntos)
                                 editor.putBoolean(getString(R.string.level), false)
                                 if (currentLevel < resources.getInteger(R.integer.firstRyPJLevel)){
                                     editor.putInt(getString(R.string.lastLevel), currentLevel+1)
                                 }
                                 editor.apply()
                             }
-                            R.id.rypPalabraImagen -> {
+                            R.id.razasYPelajesJuntos -> {
                                 playNextLevel()
-                                Handler().postDelayed({
-                                    findViewById<ImageView>(R.id.confeti_anim)
-                                            .visibility = View.GONE
-                                    setGameMode()
-                                    gameMode.newGame()
-                                }, nextLevelDuration())
                                 editor = sharedPref.edit()
                                 editor.putInt(getString(R.string.minijuego),
                                         R.id.cruzas)
@@ -172,11 +164,6 @@ class Game: AppCompatActivity(), DialogExit.ExitDialogListener, DialogVictory.Vi
                             }
                             R.id.cruzas -> {
                                 playVictory()
-                                Handler().postDelayed({
-                                    findViewById<ImageView>(R.id.cup_anim)
-                                            .visibility = View.GONE
-                                    victoryDialog()
-                                }, victoryDuration())
                             }
                         }
                     }else{
@@ -203,17 +190,40 @@ class Game: AppCompatActivity(), DialogExit.ExitDialogListener, DialogVictory.Vi
         count++
     }
 
-    private fun nextLevelDuration(): Long {
-        val frameDuration : Long = resources.getInteger(R.integer.confettiFrameDuration).toLong()
-        val framesSize : Long = resources.getInteger(R.integer.confettiFramesSize).toLong()
-        return frameDuration*framesSize
-    }
-
     private fun playNextLevel() {
         val img = findViewById<ImageView>(R.id.confeti_anim)
-        val anim : AnimationDrawable = img.drawable as AnimationDrawable
         img.visibility = View.VISIBLE
-        img.post { anim.start() }
+
+        val animation = object : MyAnimationDrawable(getString(R.string.confetiDrawableName),this, img.width, img.height) {
+
+            override fun onAnimationFinish() {
+                img.visibility = View.GONE
+                setGameMode()
+                gameMode.newGame()
+            }
+
+        }
+        animation.isOneShot = true
+
+        try {
+            //Always load same bitmap, anyway you load the right one in draw() method in MyAnimationDrawable
+            val id = resources.getIdentifier("${getString(R.string.confetiDrawableName)}00.jpg", "drawable", packageName)
+            val bmp = BitmapFactory.decodeResource(resources, id);
+            for (i in 0..resources.getInteger(R.integer.confettiFramesSize)) {
+                animation.addFrame(BitmapDrawable(resources, bmp), resources.getInteger(R.integer.confettiFrameDuration))
+            }
+        } catch (e: IOException) {
+            e.printStackTrace()
+        }
+
+        //Set AnimationDrawable to ImageView
+        if (Build.VERSION.SDK_INT < 16) {
+            img.setBackgroundDrawable(animation);
+        } else {
+            img.background = animation;
+        }
+
+        img.post { animation.start() }
     }
 
     private fun victoryDialog() {
@@ -222,17 +232,40 @@ class Game: AppCompatActivity(), DialogExit.ExitDialogListener, DialogVictory.Vi
         dialog.show(supportFragmentManager, "Victoria")
     }
 
-    private fun victoryDuration(): Long {
-        val frameDuration : Long = resources.getInteger(R.integer.cupFrameDuration).toLong()
-        val framesSize : Long = resources.getInteger(R.integer.cupFramesSize).toLong()
-        return frameDuration*framesSize
-    }
-
     private fun playVictory() {
         val img = findViewById<ImageView>(R.id.cup_anim)
-        val anim = img.drawable as AnimationDrawable
         img.visibility = View.VISIBLE
-        img.post { anim.start() }
+
+        val animation = object : MyAnimationDrawable(getString(R.string.cupDrawableName),this, img.width, img.height) {
+
+            override fun onAnimationFinish() {
+                img.visibility = View.GONE
+                victoryDialog()
+            }
+
+        }
+        animation.isOneShot = true
+
+        try {
+            //Always load same bitmap, anyway you load the right one in draw() method in MyAnimationDrawable
+            val id = resources.getIdentifier("${getString(R.string.cupDrawableName)}00.jpg", "drawable", packageName)
+            val bmp = BitmapFactory.decodeResource(resources, id);
+            for (i in 0..resources.getInteger(R.integer.cupFramesSize)) {
+                animation.addFrame(BitmapDrawable(resources, bmp), resources.getInteger(R.integer.cupFrameDuration))
+            }
+        } catch (e: IOException) {
+            e.printStackTrace()
+        }
+
+        //Set AnimationDrawable to ImageView
+        if (Build.VERSION.SDK_INT < 16) {
+            img.setBackgroundDrawable(animation);
+        } else {
+            img.background = animation;
+        }
+
+        img.post { animation.start() }
+
     }
 
     private fun restartError() {

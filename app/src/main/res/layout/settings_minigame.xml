@@ -18,7 +18,7 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <RadioGroup
-        android:id="@+id/settingsMinigameGroup"
+        android:id="@+id/settingsInteractionGroup"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
@@ -31,7 +31,7 @@
         app:layout_constraintTop_toBottomOf="@+id/settingsMinigameTitle">
 
         <RadioButton
-            android:id="@+id/rypImagenPalabra"
+            android:id="@+id/imagenPalabra"
             style="@android:style/TextAppearance.DeviceDefault.Medium"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -39,7 +39,7 @@
             android:text="Razas y Pelajes: Imagen-Palabra" />
 
         <RadioButton
-            android:id="@+id/rypPalabraImagen"
+            android:id="@+id/palabraImagen"
             style="@android:style/TextAppearance.DeviceDefault.Medium"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -49,7 +49,7 @@
             android:text="Razas y Pelajes: Palabra-Imagen" />
 
         <RadioButton
-            android:id="@+id/cruzas"
+            android:id="@+id/imagenImagen"
             style="@android:style/TextAppearance.DeviceDefault.Medium"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"

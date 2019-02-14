@@ -22,12 +22,16 @@ class InteraccionA(private val context : Game): GameMode(context){
                 context.getString(R.string.config), Context.MODE_PRIVATE);
         val razaOexclusivoPelaje = r.nextBoolean()
         val questionMode : QuestionMode
-        questionMode = if (razaOexclusivoPelaje){
-            // raza
-            QuestionRaza()
+        questionMode = if (sharedPref.getInt(context.getString(R.string.minijuego), R.id.razasYPelajes) == R.id.razasYPelajes){
+            if (razaOexclusivoPelaje){
+                // raza
+                QuestionRaza()
+            }else{
+                // pelaje
+                QuestionPelaje()
+            }
         }else{
-            // pelaje
-            QuestionPelaje()
+            QuestionRazaYPelaje()
         }
         val chosenHorses : List<Horse>
         chosenHorses = questionMode.chooseHorses(horses, context.answerViews.size)

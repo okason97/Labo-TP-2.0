@@ -7,7 +7,7 @@
     android:layout_height="match_parent">
 
     <include
-        android:id="@+id/animations" layout="@layout/animations" />
+        android:id="@+id/animation" layout="@layout/cup_anim" />
 
     <include
         android:id="@+id/question"

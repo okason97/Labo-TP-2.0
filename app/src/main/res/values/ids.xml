@@ -3,4 +3,7 @@
     <item name="imageQuestion" type="id">imageQuestion</item>
     <item name="razas" type="id">razas</item>
     <item name="pelajes" type="id">pelajes</item>
+    <item name="razasYPelajes" type="id">razasYPelajes</item>
+    <item name="razasYPelajesJuntos" type="id">razasYPelajesJuntos</item>
+    <item name="cruzas" type="id">cruzas</item>
 </resources>
