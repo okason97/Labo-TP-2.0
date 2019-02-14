@@ -20,7 +20,6 @@ class Reconocimiento : AppCompatActivity(), DialogExit.ExitDialogListener {
 
     val horses : ArrayList<Horse> = ArrayList()
     val sounds : ArrayList<MediaPlayer> = ArrayList()
-    private val sharedPref : SharedPreferences = getSharedPreferences(getString(R.string.config), Context.MODE_PRIVATE)
 
     private fun loadRazasYPelajes() {
         val hCol = JSONHelper.fromJSON(Horse::class.java, resources.openRawResource(R.raw.horses))
@@ -40,7 +39,7 @@ class Reconocimiento : AppCompatActivity(), DialogExit.ExitDialogListener {
         // lo mismo pero con .cruza
     }
 
-    private fun initializeHorses() {
+    private fun initializeHorses(sharedPref: SharedPreferences) {
         var ryp = sharedPref.getBoolean(getString(R.string.reconRyP), false)
         val cruzas = sharedPref.getBoolean(getString(R.string.reconCruza), false)
 
@@ -50,15 +49,16 @@ class Reconocimiento : AppCompatActivity(), DialogExit.ExitDialogListener {
         if (cruzas) loadCruzas()
     }
 
-    private fun setReconMode(){
+    private fun setReconMode(sharedPref: SharedPreferences){
         val viewMode = sharedPref.getInt(getString(R.string.reconRadio), R.id.lista)
         mode = if (viewMode == R.id.lista) ReconLista(this) else ReconGrilla(this)
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        initializeHorses()
-        setReconMode()
+        val sharedPref : SharedPreferences = getSharedPreferences(getString(R.string.config), Context.MODE_PRIVATE)
+        initializeHorses(sharedPref)
+        setReconMode(sharedPref)
         mode.runRecon()
     }
 
