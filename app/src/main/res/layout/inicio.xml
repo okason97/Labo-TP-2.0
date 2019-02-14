@@ -5,136 +5,115 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <ImageButton
+    <Button
         android:id="@+id/help"
         android:layout_width="55dp"
         android:layout_height="55dp"
         android:layout_marginStart="16dp"
         android:layout_marginLeft="16dp"
         android:layout_marginTop="16dp"
-        android:layout_marginEnd="8dp"
-        android:layout_marginRight="8dp"
-        android:layout_marginBottom="8dp"
-        android:background="@null"
+        android:background="@drawable/button_effect_info"
+        android:onClick="onAbout"
         android:scaleType="fitXY"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.0"
         app:srcCompat="@drawable/info_regular" />
 
     <Button
         android:id="@+id/config"
         android:layout_width="55dp"
         android:layout_height="55dp"
-        android:layout_marginBottom="8dp"
-        android:layout_marginEnd="16dp"
-        android:layout_marginLeft="8dp"
-        android:layout_marginRight="16dp"
-        android:layout_marginStart="8dp"
         android:layout_marginTop="16dp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginRight="16dp"
+        android:background="@drawable/config_button_effect"
         android:onClick="toConfig"
         android:scaleType="fitXY"
-        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="1.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.0"
-        android:background="@drawable/config_button_effect" />
+        app:layout_constraintTop_toTopOf="parent" />
 
-    <ImageView
-        android:id="@+id/logo_unlp"
-        android:layout_width="150dp"
-        android:layout_height="100dp"
-        android:layout_marginBottom="16dp"
-        android:layout_marginEnd="8dp"
-        android:layout_marginLeft="16dp"
-        android:layout_marginRight="8dp"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="8dp"
+    <android.support.constraint.ConstraintLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="1.0"
-        app:srcCompat="@drawable/logo_unlp" />
+        app:layout_constraintTop_toTopOf="parent">
+
+        <ImageView
+            android:id="@+id/titulo"
+            android:layout_width="400dp"
+            android:layout_height="75dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginBottom="8dp"
+            android:scaleType="fitStart"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.0"
+            app:srcCompat="@drawable/logo_app" />
+
+        <ImageView
+            android:id="@+id/cedica"
+            android:layout_width="184dp"
+            android:layout_height="140dp"
+            android:layout_marginStart="100dp"
+            android:layout_marginLeft="100dp"
+            android:layout_marginTop="13dp"
+            android:layout_marginEnd="100dp"
+            android:layout_marginRight="100dp"
+            app:layout_constraintEnd_toEndOf="@+id/titulo"
+            app:layout_constraintStart_toStartOf="@+id/titulo"
+            app:layout_constraintTop_toBottomOf="@+id/titulo"
+            app:srcCompat="@drawable/cedica" />
+
+        <Button
+            android:id="@+id/play"
+            android:layout_width="200dp"
+            android:layout_height="75dp"
+            android:layout_marginTop="7dp"
+            android:background="@drawable/play_button_effect"
+            android:onClick="onJugar"
+            android:scaleType="fitXY"
+            app:layout_constraintEnd_toEndOf="@+id/cedica"
+            app:layout_constraintStart_toStartOf="@+id/cedica"
+            app:layout_constraintTop_toBottomOf="@+id/cedica" />
+
+        <Button
+            android:id="@+id/reconocimiento"
+            android:layout_width="200dp"
+            android:layout_height="50dp"
+            android:layout_marginTop="1dp"
+            android:background="@drawable/reconocimiento_button_effect"
+            android:onClick="onRecon"
+            android:scaleType="fitXY"
+            app:layout_constraintEnd_toEndOf="@+id/play"
+            app:layout_constraintStart_toStartOf="@+id/play"
+            app:layout_constraintTop_toBottomOf="@+id/play" />
+
+    </android.support.constraint.ConstraintLayout>
 
     <ImageView
         android:id="@+id/logo_informatica"
         android:layout_width="150dp"
         android:layout_height="100dp"
-        android:layout_marginBottom="16dp"
         android:layout_marginEnd="16dp"
-        android:layout_marginLeft="8dp"
         android:layout_marginRight="16dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
+        android:layout_marginBottom="16dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="1.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="1.0"
         app:srcCompat="@drawable/logo_facultad_informatiac" />
 
     <ImageView
-        android:id="@+id/titulo"
-        android:layout_width="400dp"
-        android:layout_height="75dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginLeft="8dp"
-        android:layout_marginTop="8dp"
-        android:layout_marginEnd="8dp"
-        android:layout_marginRight="8dp"
-        android:layout_marginBottom="8dp"
-        android:scaleType="fitStart"
+        android:id="@+id/logo_unlp"
+        android:layout_width="150dp"
+        android:layout_height="100dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginLeft="16dp"
+        android:layout_marginBottom="16dp"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toStartOf="@+id/config"
-        app:layout_constraintHorizontal_bias="0.497"
-        app:layout_constraintStart_toEndOf="@+id/help"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.0"
-        app:srcCompat="@drawable/logo_app" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:srcCompat="@drawable/logo_unlp" />
 
-    <Button
-        android:id="@+id/reconocimiento"
-        android:onClick="onRecon"
-        android:layout_width="200dp"
-        android:layout_height="50dp"
-        android:layout_marginTop="1dp"
-        app:layout_constraintEnd_toEndOf="@+id/play"
-        app:layout_constraintStart_toStartOf="@+id/play"
-        app:layout_constraintTop_toBottomOf="@+id/play"
-        android:background="@drawable/reconocimiento_button_effect"
-        android:scaleType="fitXY" />
-
-    <Button
-        android:id="@+id/play"
-        android:onClick="onJugar"
-        android:layout_width="200dp"
-        android:layout_height="75dp"
-        android:layout_marginTop="7dp"
-        app:layout_constraintEnd_toEndOf="@+id/cedica"
-        app:layout_constraintStart_toStartOf="@+id/cedica"
-        app:layout_constraintTop_toBottomOf="@+id/cedica"
-        android:background="@drawable/play_button_effect"
-        android:scaleType="fitXY" />
-
-    <ImageView
-        android:id="@+id/cedica"
-        android:layout_width="184dp"
-        android:layout_height="140dp"
-        android:layout_marginEnd="100dp"
-        android:layout_marginLeft="100dp"
-        android:layout_marginRight="100dp"
-        android:layout_marginStart="100dp"
-        android:layout_marginTop="13dp"
-        app:layout_constraintEnd_toEndOf="@+id/titulo"
-        app:layout_constraintStart_toStartOf="@+id/titulo"
-        app:layout_constraintTop_toBottomOf="@+id/titulo"
-        app:srcCompat="@drawable/cedica" />
 </android.support.constraint.ConstraintLayout>
