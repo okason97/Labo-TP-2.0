@@ -274,7 +274,7 @@ class Game: AppCompatActivity(), DialogExit.ExitDialogListener, DialogVictory.Vi
             sound.stop()
             sound.release()
         }
-        sounds[getString(R.string.error_sound_key)] = MediaPlayer.create(this, R.raw.error_sound)
+        sounds[getString(R.string.error_sound_key)] = MediaPlayer.create(this, R.raw.sound_resoplido)
     }
 
     private fun correctDuration(): Long {
