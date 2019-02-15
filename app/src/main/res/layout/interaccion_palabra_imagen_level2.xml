@@ -6,8 +6,6 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <include
-        android:id="@+id/animation" layout="@layout/confetti_anim" />
 
     <include
         android:id="@+id/question"
@@ -95,4 +93,6 @@
         </LinearLayout>
 
     </LinearLayout>
+    <include android:id="@+id/animation" layout="@layout/confetti_anim" />
+
 </android.support.constraint.ConstraintLayout>
