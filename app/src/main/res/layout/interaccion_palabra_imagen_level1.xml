@@ -36,6 +36,7 @@
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
+                android:background="@drawable/answer_background"
                 android:orientation="vertical">
 
                 <include
@@ -51,6 +52,7 @@
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
+                android:background="@drawable/answer_background"
                 android:orientation="vertical">
 
                 <include
