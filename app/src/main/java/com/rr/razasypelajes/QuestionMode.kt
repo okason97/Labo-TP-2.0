@@ -37,9 +37,13 @@ abstract class QuestionMode {
 
     fun setSound(view : Button, horse : Horse, context : Context){
         view.setOnClickListener {
-            val id = context.resources.getIdentifier("sound_"+getData(horse), "raw",
-                    context.packageName)
-            MediaPlayer.create(context, id).start()
+            try {
+                val id = context.resources.getIdentifier("sound_"+getData(horse), "raw",
+                        context.packageName)
+                MediaPlayer.create(context, id).start()
+            } catch (e: Exception) {
+                MediaPlayer.create(context, R.raw.sound_resoplido).start()
+            }
         }
     }
 
