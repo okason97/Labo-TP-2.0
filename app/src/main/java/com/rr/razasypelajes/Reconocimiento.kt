@@ -31,7 +31,7 @@ class Reconocimiento : AppCompatActivity(), DialogExit.ExitDialogListener {
                 val id = resources.getIdentifier("sound_" + h.raza + "_" + h.pelaje, "raw", packageName)
                 sounds.add(MediaPlayer.create(this, id))
             } catch (e: Exception) {
-                sounds.add(MediaPlayer.create(this, R.raw.sound_relincho))
+                sounds.add(MediaPlayer.create(this, R.raw.sound_resoplido))
             }
         }
     }
