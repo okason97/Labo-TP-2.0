@@ -50,7 +50,6 @@ class InteraccionA(private val context : Game): GameMode(context){
         context.findViewById<ImageView>(R.id.questionImage)
                 .setImageResource(id)
 
-        context.answerViews[answerIndex].setBackgroundColor(context.resources.getColor(R.color.colorAccent))
         context.answer = context.answerViews[answerIndex].id
     }
 }
