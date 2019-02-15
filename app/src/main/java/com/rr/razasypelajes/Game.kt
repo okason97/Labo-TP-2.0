@@ -199,6 +199,7 @@ class Game: AppCompatActivity(), DialogExit.ExitDialogListener, DialogVictory.Vi
     private fun playNextLevel() {
         val img = findViewById<ImageView>(R.id.confeti_anim)
         img.visibility = View.VISIBLE
+        img.bringToFront()
 
         // Pass our animation drawable to our custom drawable class
         val anim = object : MyAnimationDrawable(ResourcesCompat.getDrawable(resources, R.drawable.anim_confeti, null)
@@ -228,6 +229,7 @@ class Game: AppCompatActivity(), DialogExit.ExitDialogListener, DialogVictory.Vi
     private fun playVictory() {
         val img = findViewById<ImageView>(R.id.cup_anim)
         img.visibility = View.VISIBLE
+        img.bringToFront()
 
         // Pass our animation drawable to our custom drawable class
         val anim = object : MyAnimationDrawable(ResourcesCompat.getDrawable(resources, R.drawable.anim_cup, null)
