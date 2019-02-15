@@ -127,5 +127,4 @@ class ConfigActivity : AppCompatActivity(), DialogExitConfig.ExitConfigDialogLis
         editor.putBoolean(getString(R.string.reconCruza), reconCruza.isChecked)
         editor.apply()
     }
-
 }
