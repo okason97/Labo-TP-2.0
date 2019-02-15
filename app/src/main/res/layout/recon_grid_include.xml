@@ -30,6 +30,8 @@
         android:layout_marginTop="8dp"
         android:gravity="center"
         android:text="@string/placeholder"
+        android:textColor="@color/primaryTextColor"
+        app:fontFamily="@font/mitr_ssemibold"
         app:layout_constraintBottom_toTopOf="@+id/gridItemAudio"
         app:layout_constraintEnd_toEndOf="@+id/gridItemImage"
         app:layout_constraintStart_toStartOf="@+id/gridItemImage"
