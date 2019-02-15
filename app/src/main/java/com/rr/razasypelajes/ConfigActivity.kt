@@ -7,6 +7,7 @@ import android.support.v4.app.DialogFragment
 import android.support.v7.app.AppCompatActivity
 import android.view.View
 import android.widget.*
+import kotlinx.android.synthetic.main.settings_minigame.*
 
 class ConfigActivity : AppCompatActivity(), DialogExitConfig.ExitConfigDialogListener {
     override fun onExitConfigDialogPositiveClick(dialog: DialogFragment) {
@@ -83,8 +84,11 @@ class ConfigActivity : AppCompatActivity(), DialogExitConfig.ExitConfigDialogLis
 
         // Interaction
         if (preferences.getInt(getString(R.string.minijuego), R.id.razasYPelajes) != R.id.cruzas){
+            findViewById<RadioButton>(R.id.imagenPalabra).isEnabled = true
+            findViewById<RadioButton>(R.id.palabraImagen).isEnabled = true
             interactionRadio.check(preferences.getInt(getString(R.string.interaccion), R.id.imagenPalabra))
         }else{
+            findViewById<RadioButton>(R.id.imagenImagen).isEnabled = true
             interactionRadio.check(R.id.imagenImagen)
         }
 
