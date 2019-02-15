@@ -16,6 +16,7 @@
         android:layout_marginRight="32dp"
         android:layout_marginBottom="16dp"
         android:contentDescription="@string/horse_image"
+        android:onClick="enlarge"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@+id/listItemText"
         app:layout_constraintStart_toStartOf="parent"

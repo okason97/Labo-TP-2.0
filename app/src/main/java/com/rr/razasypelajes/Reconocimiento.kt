@@ -2,12 +2,14 @@ package com.rr.razasypelajes
 
 import android.content.Context
 import android.content.SharedPreferences
+import android.media.Image
 import android.media.MediaPlayer
 import android.os.Bundle
 import android.support.v4.app.DialogFragment
 import android.support.v7.app.AppCompatActivity
 import android.view.View
 import android.widget.CheckBox
+import android.widget.ImageView
 import com.rr.razasypelajes.helpers.JSONHelper
 import com.rr.razasypelajes.horses.Horse
 
@@ -64,6 +66,14 @@ class Reconocimiento : AppCompatActivity(), DialogExit.ExitDialogListener {
 
     fun goBack(view: View) {
         finish()
+    }
+
+    fun enlarge(view: View) {
+        mode.enlarge(view as ImageView)
+    }
+
+    fun unEnlarge(view: View) {
+        view.visibility = View.GONE
     }
 
 }
