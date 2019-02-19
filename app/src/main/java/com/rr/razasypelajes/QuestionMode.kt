@@ -8,11 +8,6 @@ import com.rr.razasypelajes.horses.Horse
 
 abstract class QuestionMode {
     fun chooseHorses(horses: List<Horse>, size: Int): List<Horse>{
-        println("--------------------------")
-        println("Horses: $horses")
-        println("Size: $size")
-        println("--------------------------")
-
         var count = 0
         var chosenHorses : List<Horse> = ArrayList(size)
         var chosenRazasOPelajes : List<String> = ArrayList(size)
