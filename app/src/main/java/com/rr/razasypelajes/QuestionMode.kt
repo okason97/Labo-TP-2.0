@@ -5,6 +5,7 @@ import android.media.MediaPlayer
 import android.widget.Button
 import android.widget.TextView
 import com.rr.razasypelajes.horses.Horse
+import java.lang.Exception
 
 abstract class QuestionMode {
     fun chooseHorses(horses: List<Horse>, size: Int): List<Horse>{
@@ -36,10 +37,27 @@ abstract class QuestionMode {
     abstract fun getPrettyData(horse: Horse): String
 
     fun setSound(view : Button, horse : Horse, context : Context){
-        view.setOnClickListener {
-            val id = context.resources.getIdentifier("sound_"+getData(horse), "raw",
-                    context.packageName)
-            MediaPlayer.create(context, id).start()
+        val sharedPrefs = context.getSharedPreferences(context.getString(R.string.config), Context.MODE_PRIVATE)
+        if (sharedPrefs.getBoolean(context.getString(R.string.audioSwitch), false)){
+            view.setOnClickListener {
+                try{
+                    val id = context.resources.getIdentifier("sound_fem_"+getData(horse), "raw",
+                            context.packageName)
+                    MediaPlayer.create(context, id).start()
+                }catch (e : Exception){
+                    MediaPlayer.create(context, R.raw.sound_relincho)
+                }
+            }
+        }else{
+            view.setOnClickListener {
+                try{
+                    val id = context.resources.getIdentifier("sound_mas_"+getData(horse), "raw",
+                            context.packageName)
+                    MediaPlayer.create(context, id).start()
+                }catch (e : Exception){
+                    MediaPlayer.create(context, R.raw.sound_relincho)
+                }
+            }
         }
     }
 
