@@ -7,9 +7,6 @@
     android:layout_height="match_parent">
 
     <include
-        android:id="@+id/animation" layout="@layout/cup_anim" />
-
-    <include
         android:id="@+id/question"
         layout="@layout/image_question_padres"
         android:layout_width="0dp"
@@ -70,4 +67,7 @@
         </LinearLayout>
 
     </LinearLayout>
+
+    <include android:id="@+id/animation" layout="@layout/cup_anim" />
+
 </android.support.constraint.ConstraintLayout>

@@ -2,31 +2,31 @@
   {
     "raza":"cuarto_de_milla",
     "pelaje":"bayo",
-    "image":"horse1"
+    "image":"cuarto_de_milla_bayo"
   },
   {
     "raza":"criollo",
     "pelaje":"picaso",
-    "image":"horse2"
+    "image":"criollo_picaso"
   },
   {
     "raza":"mestizo",
     "pelaje":"tordillo_canela",
-    "image":"horse3"
+    "image":"mestizo_tordillo_canela"
   },
   {
     "raza":"mestizo",
     "pelaje":"tobiano",
-    "image":"horse1"
+    "image":"mestizo_tobiano"
   },
   {
     "raza":"mestizo_con_criollo",
     "pelaje":"overo_azulejo",
-    "image":"horse5"
+    "image":"mestizo_con_criollo_overo_azulejo"
   },
   {
     "raza":"cruzarabe",
     "pelaje":"alazan_ruano",
-    "image":"horse5"
+    "image":"cruzarabe_alazan_ruano"
   }
 ]

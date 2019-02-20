@@ -21,6 +21,7 @@ class Game: AppCompatActivity(), DialogExit.ExitDialogListener, DialogVictory.Vi
         count = 0
         victories = 0
         gameMode.newGame()
+        enableResponses()
     }
 
     override fun onDefeatDialogNegativeClick(dialog: DialogFragment) {
@@ -128,9 +129,8 @@ class Game: AppCompatActivity(), DialogExit.ExitDialogListener, DialogVictory.Vi
     }
 
     fun selectedAnswer(view: View) {
-        println(answer)
-        println(view.id)
-        println(victories)
+        disableResponses()
+
         if (view.id == answer) {
             victories++
             playCorrect()
@@ -139,15 +139,12 @@ class Game: AppCompatActivity(), DialogExit.ExitDialogListener, DialogVictory.Vi
         }
         count++
         if (count < 5) {
-            if (view.id == answer) {
-                Handler().postDelayed({
-                    gameMode.newGame()
-                }, duration(R.string.correct_sound_key))
-            }else{
-                Handler().postDelayed({
-                    gameMode.newGame()
-                }, duration(R.string.error_sound_key))
-            }
+            val duration = if (view.id == answer) duration(R.string.correct_sound_key)
+                    else duration(R.string.error_sound_key)
+            Handler().postDelayed({
+                gameMode.newGame()
+                enableResponses()
+            }, duration)
         }else{
             if (victories >= 3) {
                 val currentLevel = sharedPref.getInt(getString(R.string.lastLevel), 1)
@@ -253,7 +250,6 @@ class Game: AppCompatActivity(), DialogExit.ExitDialogListener, DialogVictory.Vi
     private fun duration(key : Int): Long {
         val sound : MediaPlayer? = sounds[getString(key)]
         return if (sound != null) {
-            System.out.println("sound exists")
             sound.duration.toLong()
         } else
             0
@@ -268,4 +264,7 @@ class Game: AppCompatActivity(), DialogExit.ExitDialogListener, DialogVictory.Vi
         val dialog : DialogFragment = DialogExit()
         dialog.show(supportFragmentManager, "Salir")
     }
+
+    private fun disableResponses() { for (v in answerViews) v.isClickable = false }
+    private fun enableResponses() { for (v in answerViews) v.isClickable = true }
 }
