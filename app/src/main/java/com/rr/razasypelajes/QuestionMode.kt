@@ -40,7 +40,7 @@ abstract class QuestionMode {
                             context.packageName)
                     MediaPlayer.create(context, id).start()
                 }catch (e : Exception){
-                    MediaPlayer.create(context, R.raw.sound_relincho)
+                    MediaPlayer.create(context, R.raw.sound_relincho).start()
                 }
             }
         }else{
@@ -50,7 +50,7 @@ abstract class QuestionMode {
                             context.packageName)
                     MediaPlayer.create(context, id).start()
                 }catch (e : Exception){
-                    MediaPlayer.create(context, R.raw.sound_relincho)
+                    MediaPlayer.create(context, R.raw.sound_relincho).start()
                 }
             }
         }
