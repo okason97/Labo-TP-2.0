@@ -1,5 +1,6 @@
 package com.rr.razasypelajes.horses
 
+import android.content.Context
 import com.rr.razasypelajes.helpers.JSONBuildable
 import com.rr.razasypelajes.helpers.JSONHelper
 import org.json.JSONArray
@@ -27,5 +28,17 @@ class Padres(json: JSONObject) : JSONBuildable(json) {
 
     override fun toString(): String {
         return "Padres(name=$name, img=$img, parents=$parents)"
+    }
+
+    fun getChildImageId(context: Context): Int {
+        return context.resources.getIdentifier(img, "drawable", context.packageName)
+    }
+
+    fun getParentsImagesIds(context: Context): List<Int> {
+        var parentsImagesIds : List<Int> = ArrayList()
+        for (parent in parents as List<String>){
+            parentsImagesIds += context.resources.getIdentifier(parent, "drawable", context.packageName)
+        }
+        return parentsImagesIds
     }
 }
