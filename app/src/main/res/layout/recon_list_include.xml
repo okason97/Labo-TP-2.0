@@ -11,16 +11,14 @@
         android:layout_height="125dp"
         android:layout_marginStart="24dp"
         android:layout_marginLeft="24dp"
-        android:layout_marginTop="16dp"
         android:layout_marginEnd="32dp"
         android:layout_marginRight="32dp"
-        android:layout_marginBottom="16dp"
         android:contentDescription="@string/horse_image"
         android:onClick="enlarge"
-        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintBottom_toBottomOf="@+id/listItemBigText"
         app:layout_constraintEnd_toStartOf="@+id/listItemText"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/listItemBigText"
         app:srcCompat="@android:drawable/ic_menu_myplaces" />
 
     <TextView
@@ -30,6 +28,7 @@
         android:layout_marginTop="8dp"
         android:gravity="center"
         android:text="@string/placeholder"
+        android:textSize="16sp"
         android:textColor="@color/primaryTextColor"
         app:fontFamily="@font/mitr_ssemibold"
         app:layout_constraintBottom_toTopOf="@+id/listItemAudio"
@@ -61,13 +60,16 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="32dp"
         android:layout_marginLeft="32dp"
+        android:layout_marginTop="16dp"
         android:layout_marginEnd="24dp"
         android:layout_marginRight="24dp"
+        android:layout_marginBottom="16dp"
+        android:textColor="@color/primaryTextColor"
         android:textSize="12sp"
-        app:layout_constraintBottom_toBottomOf="@+id/listItemImage"
+        app:fontFamily="@font/mitr_ssemibold"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/listItemText"
-        app:layout_constraintTop_toTopOf="@+id/listItemImage"
-        tools:text="@string/loreipsum" />
+        app:layout_constraintTop_toTopOf="parent" />
 
 </android.support.constraint.ConstraintLayout>

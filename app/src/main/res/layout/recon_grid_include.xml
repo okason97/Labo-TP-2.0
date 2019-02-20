@@ -33,6 +33,7 @@
         android:text="@string/placeholder"
         android:textColor="@color/primaryTextColor"
         app:fontFamily="@font/mitr_ssemibold"
+        android:textSize="16sp"
         app:layout_constraintBottom_toTopOf="@+id/gridItemAudio"
         app:layout_constraintEnd_toEndOf="@+id/gridItemImage"
         app:layout_constraintStart_toStartOf="@+id/gridItemImage"
