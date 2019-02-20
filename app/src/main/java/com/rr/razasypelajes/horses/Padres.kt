@@ -8,14 +8,8 @@ import org.json.JSONArray
 import org.json.JSONException
 import org.json.JSONObject
 
-class Padres(json: JSONObject) : JSONBuildable(json) {
-    var name: String? = null
-        private set
-    var img: String? = null
-        private set
+class Padres(json: JSONObject) : AbsHorse(json) {
     var parents: List<String>? = null
-        private set
-    var text: String? = null
         private set
 
     @Throws(JSONException::class)
@@ -28,10 +22,6 @@ class Padres(json: JSONObject) : JSONBuildable(json) {
 
     override fun toString(): String {
         return "Padres(name=$name, img=$img, parents=$parents)"
-    }
-
-    fun getChildImageId(context: Context): Int {
-        return context.resources.getIdentifier(img, "drawable", context.packageName)
     }
 
     fun getParentsImagesIds(context: Context): List<Int> {

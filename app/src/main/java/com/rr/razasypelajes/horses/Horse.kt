@@ -7,16 +7,10 @@ import com.rr.razasypelajes.helpers.JSONHelper
 import org.json.JSONException
 import org.json.JSONObject
 
-class Horse(json: JSONObject) : JSONBuildable(json) {
+class Horse(json: JSONObject) : AbsHorse(json) {
     var raza: String? = null
         private set
     var pelaje: String? = null
-        private set
-    var img: String? = null
-        private set
-    var name: String? = null
-        private set
-    var text: String? = null
         private set
 
 
@@ -39,10 +33,6 @@ class Horse(json: JSONObject) : JSONBuildable(json) {
 
     fun prettyBoth() : String? {
         return prettyRaza() + " - " + prettyPelaje()
-    }
-
-    fun getImageId(context: Context): Int {
-        return context.resources.getIdentifier(img, "drawable", context.packageName)
     }
 
     override fun toString(): String {

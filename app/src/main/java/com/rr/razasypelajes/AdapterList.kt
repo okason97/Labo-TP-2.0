@@ -8,11 +8,12 @@ import android.view.ViewGroup
 import android.widget.ImageButton
 import android.widget.ImageView
 import android.widget.TextView
+import com.rr.razasypelajes.horses.AbsHorse
 import com.rr.razasypelajes.horses.Horse
 
 class AdapterList(val context: Reconocimiento): RecyclerView.Adapter<AdapterList.ViewHolder>() {
 
-    private val horses: List<Horse> = context.horses
+    private val horses: List<AbsHorse> = context.horses
     private val sounds: List<MediaPlayer> = context.sounds
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
@@ -31,8 +32,8 @@ class AdapterList(val context: Reconocimiento): RecyclerView.Adapter<AdapterList
         val horse = horses[position]
         holder.image.setImageResource(horse.getImageId(context))
         holder.audio.setOnClickListener { sounds[position].start() }
-        holder.texto.text = horse.prettyBoth()
-        holder.bigText.text = context.resources.getText(R.string.loreipsum) // TODO
+        holder.texto.text = horse.prettyName()
+        holder.bigText.text = horse.text
     }
 
 

@@ -18,7 +18,7 @@ class InteraccionC(private val context : Game): GameMode(context) {
         var horses = JSONHelper.fromJSON(Horse::class.java,
                 context.resources.openRawResource(R.raw.horses))
         horses = horses.shuffled()
-        val childImageId = cruzas[answerIndex].getChildImageId(context)
+        val childImageId = cruzas[answerIndex].getImageId(context)
         chosenHorses = chooseHorses(horses, context.answerViews.size) + childImageId
         chosenHorses = chosenHorses.shuffled()
         for (i in  0 until chosenHorses.size) {
