@@ -30,5 +30,11 @@ class JSONHelper {
             }
             return list
         }
+
+        fun convertJsonArray(jsonArray: JSONArray) : List<String> {
+            val list = ArrayList<String>()
+            for (i in 0 until jsonArray.length()) list.add(jsonArray[i].toString())
+            return list
+        }
     }
 }

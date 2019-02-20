@@ -1,14 +1,50 @@
 [
   {
-    "image":"padres1",
-    "cruza":"cuarto_de_milla"
+    "name":"bella",
+    "img":"cruza_bella_hijo",
+    "parents":[
+      "cruza_bella_madre",
+      "cruza_bella_padre"
+    ]
   },
   {
-    "image":"padres2",
-    "cruza":"criollo"
+    "name":"huayra",
+    "img":"cruza_huayra_hijo",
+    "parents":[
+      "cruza_huayra_madre",
+      "cruza_huayra_padre"
+    ]
   },
   {
-    "image":"padres3",
-    "cruza":"mestizo"
+    "name":"mancha",
+    "img":"cruza_mancha_hijo",
+    "parents":[
+      "cruza_mancha_madre",
+      "cruza_mancha_padre"
+    ]
+  },
+  {
+    "name":"nalito",
+    "img":"cruza_nalito_hijo",
+    "parents":[
+      "cruza_nalito_madre",
+      "cruza_nalito_padre"
+    ]
+  },
+  {
+    "name":"orita",
+    "img":"cruza_orita_hijo",
+    "parents":[
+      "cruza_orita_madre",
+      "cruza_orita_padre"
+    ]
+  },
+  {
+    "name":"pirata",
+    "img":"cruza_pirata_hijo",
+    "parents":[
+      "cruza_pirata_madre",
+      "cruza_pirata_padre"
+    ]
   }
 ]
