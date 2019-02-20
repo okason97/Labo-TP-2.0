@@ -14,12 +14,15 @@ class Padres(json: JSONObject) : JSONBuildable(json) {
         private set
     var parents: List<String>? = null
         private set
+    var text: String? = null
+        private set
 
     @Throws(JSONException::class)
     override fun fromJSON(json: JSONObject) {
         this.name = json.getString("name")
         this.img = json.getString("img")
         this.parents = JSONHelper.convertJsonArray(json.getJSONArray("parents"))
+        this.text = JSONHelper.stringFromJsonArray(json.getJSONArray("text"))
     }
 
     override fun toString(): String {
