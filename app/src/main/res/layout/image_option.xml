@@ -20,5 +20,5 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         android:clickable="false"
-        app:srcCompat="@android:drawable/ic_menu_myplaces" />
+        android:adjustViewBounds="true" />
 </android.support.constraint.ConstraintLayout>
