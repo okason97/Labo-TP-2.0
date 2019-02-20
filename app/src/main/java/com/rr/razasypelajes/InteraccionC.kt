@@ -14,53 +14,37 @@ class InteraccionC(private val context : Game): GameMode(context) {
         val cruzas = JSONHelper.fromJSON(Padres::class.java,
                 context.resources.openRawResource(R.raw.padres))
         val answerIndex = r.nextInt(cruzas.size)
-        val chosenHorses : List<Horse>
+        var chosenHorses : List<Int>
         var horses = JSONHelper.fromJSON(Horse::class.java,
                 context.resources.openRawResource(R.raw.horses))
         horses = horses.shuffled()
-        chosenHorses = chooseHorses(horses, context.answerViews.size,
-                cruzas[answerIndex].cruza as String)
-        var id: Int
+        val childImageId = cruzas[answerIndex].getChildImageId(context)
+        chosenHorses = chooseHorses(horses, context.answerViews.size) + childImageId
+        chosenHorses = chosenHorses.shuffled()
         for (i in  0 until chosenHorses.size) {
-            id = context.resources.getIdentifier(chosenHorses[i].img, "drawable",
-                    context.packageName)
             context.answerViews[i].findViewById<ImageView>(R.id.imageAnswer)
-                    .setImageResource(id)
+                    .setImageResource(chosenHorses[i])
         }
 
-        id = context.resources.getIdentifier(cruzas[answerIndex].img, "drawable",
-                context.packageName)
-        context.findViewById<ImageView>(R.id.questionImage)
-                .setImageResource(id)
+        val parentImgs = cruzas[answerIndex].getParentsImagesIds(context)
+
+        context.findViewById<ImageView>(R.id.questionImage1)
+                .setImageResource(parentImgs[0])
+        context.findViewById<ImageView>(R.id.questionImage2)
+                .setImageResource(parentImgs[1])
 
         context.answer = context.answerViews[
                 chosenHorses.indexOfFirst {
-                    horse -> horse.raza == cruzas[answerIndex].cruza
+                    id -> id == childImageId
                 }
         ].id
     }
 
-    private fun chooseHorses(horses: List<Horse>, size: Int, cruza: String): List<Horse> {
-        var found = false
-        var chosenHorses : List<Horse> = ArrayList()
-        var count = 0
+    private fun chooseHorses(horses: List<Horse>, size: Int): List<Int> {
+        var chosenHorses : List<Int> = ArrayList()
         for (i in 0 until size-1){
-            if (!found){
-                if (horses[count].raza == cruza) found = true
-                chosenHorses += horses[count]
-            }else{
-                while (horses[count].raza == cruza) count++
-                chosenHorses += horses[count]
-            }
-            count++
+            chosenHorses += horses[i].getImageId(context)
         }
-        chosenHorses += if (found) {
-            while (horses[count].raza == cruza) count++
-            horses[count]
-        } else {
-            while (horses[count].raza != cruza) count++
-            horses[count]
-        }
-        return chosenHorses.shuffled()
+        return chosenHorses
     }
 }
