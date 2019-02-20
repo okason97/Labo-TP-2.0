@@ -36,5 +36,11 @@ class JSONHelper {
             for (i in 0 until jsonArray.length()) list.add(jsonArray[i].toString())
             return list
         }
+
+        fun stringFromJsonArray(jsonArray: JSONArray) : String {
+            val sb = StringBuilder()
+            for (i in 0 until jsonArray.length()) sb.append(jsonArray[i]).append("/n")
+            return sb.toString()
+        }
     }
 }
