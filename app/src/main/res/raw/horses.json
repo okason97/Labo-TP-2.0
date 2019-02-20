@@ -1,13 +1,73 @@
 [
   {
-    "raza":"cuarto_de_milla",
-    "pelaje":"bayo",
-    "image":"cuarto_de_milla_bayo"
+    "raza":"criollo",
+    "pelaje":"bayo_gateado",
+    "image":"criollo_bayo_gateado"
   },
   {
     "raza":"criollo",
     "pelaje":"picaso",
     "image":"criollo_picaso"
+  },
+  {
+    "raza":"cuarto_de_milla",
+    "pelaje":"bayo",
+    "image":"cuarto_de_milla_bayo"
+  },
+  {
+    "raza":"mestizo",
+    "pelaje":"alazan",
+    "image":"mestizo_alazan"
+  },
+  {
+    "raza":"mestizo",
+    "pelaje":"aalazan_pintado",
+    "image":"mestizo_aalazan_pintado"
+  },
+  {
+    "raza":"mestizo",
+    "pelaje":"alazan_ruano",
+    "image":"mestizo_alazan_ruano"
+  },
+  {
+    "raza":"mestizo",
+    "pelaje":"blanco",
+    "image":"mestizo_blanco"
+  },
+  {
+    "raza":"mestizo_cruzarabe",
+    "pelaje":"alazan_tostado",
+    "image":"mestizo_cruzarabe_alazan_tostado"
+  },
+  {
+    "raza":"mestizo",
+    "pelaje":"moro",
+    "image":"mestizo_moro"
+  },
+  {
+    "raza":"mestizo",
+    "pelaje":"overo_azulejo",
+    "image":"mestizo_overo_azulejo"
+  },
+  {
+    "raza":"mestizo",
+    "pelaje":"overo_rosado",
+    "image":"mestizo_overo_rosado"
+  },
+  {
+    "raza":"mestizo",
+    "pelaje":"overo_zaino",
+    "image":"mestizo_overo_zaino"
+  },
+  {
+    "raza":"mestizo",
+    "pelaje":"tobiano",
+    "image":"mestizo_tobiano"
+  },
+  {
+    "raza":"mestizo",
+    "pelaje":"tordillo",
+    "image":"mestizo_tordillo"
   },
   {
     "raza":"mestizo",
@@ -16,17 +76,42 @@
   },
   {
     "raza":"mestizo",
-    "pelaje":"tobiano",
-    "image":"mestizo_tobiano"
+    "pelaje":"zaino",
+    "image":"mestizo_zaino"
   },
   {
-    "raza":"mestizo_con_criollo",
-    "pelaje":"overo_azulejo",
-    "image":"mestizo_con_criollo_overo_azulejo"
+    "raza":"mestizo",
+    "pelaje":"zaino",
+    "image":"mestizo_zaino"
   },
   {
-    "raza":"cruzarabe",
-    "pelaje":"alazan_ruano",
-    "image":"cruzarabe_alazan_ruano"
+    "raza":"mestizo",
+    "pelaje":"zaino_oscuro",
+    "image":"mestizo_zaino_oscuro"
+  },
+  {
+    "raza":"petiso_argentino",
+    "pelaje":"rosillo",
+    "image":"petiso_argentino_rosillo"
+  },
+  {
+    "raza":"petiso_argentino",
+    "pelaje":"tordillo_moro",
+    "image":"petiso_argentino_tordillo_moro"
+  },
+  {
+    "raza":"petiso_argentino",
+    "pelaje":"zaino",
+    "image":"petiso_argentino_zaino"
+  },
+  {
+    "raza":"sangre_pura_de_carrera",
+    "pelaje":"zaino_colorado",
+    "image":"sangre_pura_de_carrera_zaino_colorado"
+  },
+  {
+    "raza":"silla_argentino",
+    "pelaje":"alazan",
+    "image":"silla_argentino_alazan"
   }
 ]
