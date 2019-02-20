@@ -39,7 +39,7 @@ class JSONHelper {
 
         fun stringFromJsonArray(jsonArray: JSONArray) : String {
             val sb = StringBuilder()
-            for (i in 0 until jsonArray.length()) sb.append(jsonArray[i]).append("/n")
+            for (i in 0 until jsonArray.length()) sb.append(jsonArray[i]).append("\n")
             return sb.toString()
         }
     }
