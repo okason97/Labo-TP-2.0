@@ -2,7 +2,7 @@
   {
     "raza":"criollo",
     "pelaje":"bayo_gateado",
-    "image":"criollo_bayo_gateado",
+    "image":"horse_criollo_bayo_gateado",
     "name":"Tigre",
     "text":[
       "RAZA: CRIOLLO.",
@@ -16,7 +16,7 @@
   {
     "raza":"mestizo",
     "pelaje":"picaso",
-    "image":"mestizo_picaso",
+    "image":"horse_mestizo_picaso",
     "name":"Hualfín",
     "text":[
       "RAZA: MESTIZO.",
@@ -29,7 +29,7 @@
   {
     "raza":"cuarto_de_milla",
     "pelaje":"bayo",
-    "image":"cuarto_de_milla_bayo",
+    "image":"horse_cuarto_de_milla_bayo",
     "name":"Juana",
     "text":[
       "RAZA: CUARTO DE MILLA.",
@@ -44,7 +44,7 @@
   {
     "raza":"mestizo",
     "pelaje":"alazan",
-    "image":"mestizo_alazan",
+    "image":"horse_mestizo_alazan",
     "name":"Cacique",
     "text":[
       "RAZA: MESTIZO.",
@@ -58,7 +58,7 @@
   {
     "raza":"mestizo",
     "pelaje":"alazan_pintado",
-    "image":"mestizo_alazan_pintado",
+    "image":"horse_mestizo_alazan_pintado",
     "name":"Pintada",
     "text":[
       "RAZA: MESTIZO.",
@@ -71,7 +71,7 @@
   {
     "raza":"mestizo",
     "pelaje":"alazan_ruano",
-    "image":"mestizo_alazan_ruano",
+    "image":"horse_mestizo_alazan_ruano",
     "name":"Bionda",
     "text":[
       "RAZA: MESTIZO.",
@@ -84,7 +84,7 @@
   {
     "raza":"mestizo",
     "pelaje":"blanco",
-    "image":"mestizo_blanco",
+    "image":"horse_mestizo_blanco",
     "name":"Blanco",
     "text":[
       "RAZA: MESTIZO.",
@@ -98,7 +98,7 @@
   {
     "raza":"mestizo_cruzarabe",
     "pelaje":"alazan_tostado",
-    "image":"mestizo_cruzarabe_alazan_tostado",
+    "image":"horse_mestizo_cruzarabe_alazan_tostado",
     "name":"Ambar",
     "text":[
       "RAZA: MESTIZO CRUZA ÁRABE.",
@@ -117,7 +117,7 @@
   {
     "raza":"mestizo",
     "pelaje":"moro",
-    "image":"mestizo_moro",
+    "image":"horse_mestizo_moro",
     "name":"Nala",
     "text":[
       "RAZA: MESTIZO.",
@@ -150,7 +150,7 @@
   {
     "raza":"mestizo",
     "pelaje":"overo_rosado",
-    "image":"mestizo_overo_rosado",
+    "image":"horse_mestizo_overo_rosado",
     "name":"Muñeco",
     "text":[
       "RAZA: MESTIZO.",
@@ -164,7 +164,7 @@
   {
     "raza":"mestizo",
     "pelaje":"overo_zaino",
-    "image":"mestizo_overo_zaino",
+    "image":"horse_mestizo_overo_zaino",
     "name":"Antú",
     "text":[
       "RAZA: MESTIZO.",
@@ -178,7 +178,7 @@
   {
     "raza":"mestizo",
     "pelaje":"tobiano",
-    "image":"mestizo_tobiano",
+    "image":"horse_mestizo_tobiano",
     "name":"Candelaria",
     "text":[
       "RAZA: MESTIZO.",
@@ -192,7 +192,7 @@
   {
     "raza":"mestizo",
     "pelaje":"tordillo",
-    "image":"mestizo_tordillo",
+    "image":"horse_mestizo_tordillo",
     "name":"Zorzal",
     "text":[
       "RAZA: MESTIZO.",
@@ -206,7 +206,7 @@
   {
     "raza":"mestizo",
     "pelaje":"tordillo_canela",
-    "image":"mestizo_tordillo_canela",
+    "image":"horse_mestizo_tordillo_canela",
     "name":"Ciro",
     "text":[
       "RAZA: MESTIZO.",
@@ -220,7 +220,7 @@
   {
     "raza":"mestizo",
     "pelaje":"zaino",
-    "image":"mestizo_zaino",
+    "image":"horse_mestizo_zaino",
     "name":"Felipe",
     "text":[
       "RAZA: MESTIZO.",
@@ -234,7 +234,7 @@
   {
     "raza":"mestizo",
     "pelaje":"zaino",
-    "image":"mestizo_zaino_2",
+    "image":"horse_mestizo_zaino_2",
     "name":"Pochito",
     "text":[
       "RAZA: MESTIZO.",
@@ -248,7 +248,7 @@
   {
     "raza":"mestizo",
     "pelaje":"zaino_oscuro",
-    "image":"mestizo_zaino_oscuro",
+    "image":"horse_mestizo_zaino_oscuro",
     "name":"Tupac",
     "text":[
       "RAZA: MESTIZO.",
@@ -262,7 +262,7 @@
   {
     "raza":"petiso_argentino",
     "pelaje":"rosillo",
-    "image":"petiso_argentino_rosillo",
+    "image":"horse_petiso_argentino_rosillo",
     "name":"Amapola",
     "text":[
       "RAZA: PETISO ARGENTINO.",
@@ -276,7 +276,7 @@
   {
     "raza":"petiso_argentino",
     "pelaje":"tordillo_moro",
-    "image":"petiso_argentino_tordillo_moro",
+    "image":"horse_petiso_argentino_tordillo_moro",
     "name":"Mora",
     "text":[
       "RAZA: PETISO ARGENTINO.",
@@ -290,7 +290,7 @@
   {
     "raza":"petiso_argentino",
     "pelaje":"zaino",
-    "image":"petiso_argentino_zaino",
+    "image":"horse_petiso_argentino_zaino",
     "name":"Pamperito",
     "text":[
       "RAZA: PETISO ARGENTINO.",
@@ -304,7 +304,7 @@
   {
     "raza":"sangre_pura_de_carrera",
     "pelaje":"zaino_colorado",
-    "image":"sangre_pura_de_carrera_zaino_colorado",
+    "image":"horse_sangre_pura_de_carrera_zaino_colorado",
     "name":"Angola",
     "text":[
       "RAZA: SANGRE PURO DE CARRERA.",
@@ -319,7 +319,7 @@
   {
     "raza":"silla_argentino",
     "pelaje":"alazan",
-    "image":"silla_argentino_alazan",
+    "image":"horse_silla_argentino_alazan",
     "name":"Primavera",
     "text":[
       "RAZA: SILLA ARGENTINO.",
