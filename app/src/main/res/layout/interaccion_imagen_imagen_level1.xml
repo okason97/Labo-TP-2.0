@@ -34,6 +34,7 @@
             android:orientation="horizontal">
 
             <LinearLayout
+                android:theme="@style/AppTheme.AnswerButton"
                 android:id="@+id/answer1"
                 android:onClick="selectedAnswer"
                 android:layout_width="0dp"
@@ -49,6 +50,7 @@
             </LinearLayout>
 
             <LinearLayout
+                android:theme="@style/AppTheme.AnswerButton"
                 android:id="@+id/answer2"
                 android:onClick="selectedAnswer"
                 android:layout_width="0dp"
