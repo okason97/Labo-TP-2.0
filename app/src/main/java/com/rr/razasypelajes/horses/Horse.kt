@@ -31,11 +31,19 @@ class Horse(json: JSONObject) : AbsHorse(json) {
         return pelaje?.replace("_", " ")?.capitalize()
     }
 
-    fun prettyBoth() : String? {
+    fun prettyBoth() : String {
         return prettyRaza() + " - " + prettyPelaje()
     }
 
     override fun toString(): String {
         return "Horse(raza=$raza, pelaje=$pelaje, img=$img, name=$name, text=$text)"
+    }
+
+    override fun getReconSound(): String? {
+        return raza + "_" + pelaje
+    }
+
+    override fun getReconText(): String? {
+        return prettyBoth()
     }
 }

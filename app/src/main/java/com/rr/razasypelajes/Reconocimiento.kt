@@ -29,7 +29,7 @@ class Reconocimiento : AppCompatActivity(), DialogExit.ExitDialogListener {
         horses.addAll(hCol)
         for (h in hCol) {
             try {
-                val id = resources.getIdentifier("sound_" + gender + h.name?.toLowerCase() , "raw", packageName)
+                val id = resources.getIdentifier("sound_" + gender + h.getReconSound() , "raw", packageName)
                 sounds.add(MediaPlayer.create(this, id))
             } catch (e: Exception) {
                 sounds.add(MediaPlayer.create(this, R.raw.sound_resoplido))
@@ -42,7 +42,7 @@ class Reconocimiento : AppCompatActivity(), DialogExit.ExitDialogListener {
         horses.addAll(pCol)
         for (p in pCol) {
             try {
-                val id = resources.getIdentifier("sound_" + gender + p.name?.toLowerCase(), "raw", packageName)
+                val id = resources.getIdentifier("sound_" + gender + p.getReconSound(), "raw", packageName)
                 sounds.add(MediaPlayer.create(this, id))
             } catch (e: Exception) {
                 sounds.add(MediaPlayer.create(this, R.raw.sound_resoplido))

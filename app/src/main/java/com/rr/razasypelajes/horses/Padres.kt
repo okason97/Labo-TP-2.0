@@ -31,4 +31,12 @@ class Padres(json: JSONObject) : AbsHorse(json) {
         }
         return parentsImagesIds
     }
+
+    override fun getReconSound(): String? {
+        return name
+    }
+
+    override fun getReconText(): String? {
+        return name
+    }
 }

@@ -32,7 +32,7 @@ class AdapterList(val context: Reconocimiento): RecyclerView.Adapter<AdapterList
         val horse = horses[position]
         holder.image.setImageResource(horse.getImageId(context))
         holder.audio.setOnClickListener { sounds[position].start() }
-        holder.texto.text = horse.prettyName()
+        holder.texto.text = horse.getReconText()
         holder.bigText.text = horse.text
     }
 

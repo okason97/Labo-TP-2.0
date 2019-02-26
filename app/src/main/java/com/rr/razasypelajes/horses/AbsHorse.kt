@@ -19,4 +19,7 @@ abstract class AbsHorse(json: JSONObject) : JSONBuildable(json) {
     fun getImageId(context: Context): Int {
         return context.resources.getIdentifier(img, "drawable", context.packageName)
     }
+
+    abstract fun getReconSound(): String?
+    abstract fun getReconText(): String?
 }
