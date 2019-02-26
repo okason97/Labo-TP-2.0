@@ -39,8 +39,7 @@
 
                 <include
                     android:id="@+id/horseImg1"
-                    layout="@layout/image_option"
-                    android:onClick="selectedAnswer" />
+                    layout="@layout/image_option" />
 
             </LinearLayout>
 
@@ -55,8 +54,7 @@
 
                 <include
                     android:id="@+id/horseImg2"
-                    layout="@layout/image_option"
-                    android:onClick="selectedAnswer" />
+                    layout="@layout/image_option" />
             </LinearLayout>
 
         </LinearLayout>
