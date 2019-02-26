@@ -40,10 +40,12 @@ class InteraccionB(private val context : Game): GameMode(context){
 
         val answerIndex = r.nextInt(chosenHorses.size)
 
-        questionMode.setText(context.findViewById(R.id.questionText), horses[answerIndex])
+        questionMode.setText(context.findViewById(R.id.questionText), chosenHorses[answerIndex])
         questionMode.setSound(context.findViewById(R.id.questionSound),
-                horses[answerIndex], context)
+                chosenHorses[answerIndex], context)
 
         context.answer = context.answerViews[answerIndex].id
+
+        println("Interaccion - ID: " + context.answerViews[answerIndex].id)
     }
 }
