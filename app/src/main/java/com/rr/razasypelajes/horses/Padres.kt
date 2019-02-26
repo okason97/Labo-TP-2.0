@@ -37,6 +37,6 @@ class Padres(json: JSONObject) : AbsHorse(json) {
     }
 
     override fun getReconText(): String? {
-        return name
+        return prettyName()
     }
 }
