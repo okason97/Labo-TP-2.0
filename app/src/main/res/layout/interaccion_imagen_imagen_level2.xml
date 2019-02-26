@@ -36,11 +36,12 @@
 
             <LinearLayout
                 android:theme="@style/AppTheme.AnswerButton"
+                android:clickable="true"
+                android:focusable="true"
                 android:id="@+id/answer1"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
-                android:clickable="true"
                 android:onClick="selectedAnswer"
                 android:background="@drawable/answer_background"
                 android:orientation="vertical">
@@ -53,11 +54,12 @@
 
             <LinearLayout
                 android:theme="@style/AppTheme.AnswerButton"
+                android:clickable="true"
+                android:focusable="true"
                 android:id="@+id/answer2"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
-                android:clickable="false"
                 android:onClick="selectedAnswer"
                 android:background="@drawable/answer_background"
                 android:orientation="vertical">
@@ -69,11 +71,12 @@
 
             <LinearLayout
                 android:theme="@style/AppTheme.AnswerButton"
+                android:clickable="true"
+                android:focusable="true"
                 android:id="@+id/answer3"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
-                android:clickable="true"
                 android:background="@drawable/answer_background"
                 android:onClick="selectedAnswer"
                 android:orientation="vertical">
@@ -86,12 +89,13 @@
 
             <LinearLayout
                 android:theme="@style/AppTheme.AnswerButton"
+                android:clickable="true"
+                android:focusable="true"
                 android:id="@+id/answer4"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
                 android:background="@drawable/answer_background"
-                android:clickable="true"
                 android:onClick="selectedAnswer"
                 android:orientation="vertical">
 

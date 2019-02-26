@@ -35,6 +35,8 @@
 
             <LinearLayout
                 android:theme="@style/AppTheme.AnswerButton"
+                android:clickable="true"
+                android:focusable="true"
                 android:id="@+id/answer1"
                 android:onClick="selectedAnswer"
                 android:layout_width="0dp"
@@ -51,6 +53,8 @@
 
             <LinearLayout
                 android:theme="@style/AppTheme.AnswerButton"
+                android:clickable="true"
+                android:focusable="true"
                 android:id="@+id/answer2"
                 android:onClick="selectedAnswer"
                 android:layout_width="0dp"
