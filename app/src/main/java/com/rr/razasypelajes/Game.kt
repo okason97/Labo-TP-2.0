@@ -181,7 +181,9 @@ class Game: AppCompatActivity(), DialogExit.ExitDialogListener, DialogVictory.Vi
                 } else {
                     editor = sharedPref.edit()
                     editor.putBoolean(getString(R.string.level), true)
-                    editor.putInt(getString(R.string.lastLevel), currentLevel + 1)
+                    if (currentLevel.rem(2) == 0) {
+                        editor.putInt(getString(R.string.lastLevel), currentLevel + 1)
+                    }
                     editor.apply()
                     newLevel()
                 }
