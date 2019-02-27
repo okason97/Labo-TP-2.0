@@ -26,6 +26,9 @@
         <activity
             android:screenOrientation="landscape"
             android:name=".ConfigActivity" />
+        <activity
+            android:screenOrientation="landscape"
+            android:name=".AboutActivity" />
 
         <meta-data
             android:name="preloaded_fonts"

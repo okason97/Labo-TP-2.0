@@ -32,9 +32,8 @@ class MainActivity : AppCompatActivity(), DialogAbout.Listener {
     }
 
     fun onAbout(view: View?){
-        // Create an instance of the dialog fragment and show it
-        val dialog : DialogFragment = DialogAbout()
-        dialog.show(supportFragmentManager, "NoticeDialogFragment")
+        val intent = Intent(this, AboutActivity::class.java)
+        startActivity(intent)
     }
 
 }
